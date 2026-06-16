@@ -1,4 +1,6 @@
-/* RESET & FONTS */
+/* ==========================================================================
+   1. RESET, VARIABLES & ROOT STYLES
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +16,7 @@
     --accent: #39ff14; /* Neon Volt Green */
     --accent-hover: #2ecc12;
     --danger: #ff453a;
+    --info-blue: #007aff;
 }
 
 body {
@@ -22,7 +25,9 @@ body {
     overflow-x: hidden;
 }
 
-/* 1. MATCH TICKER BANNER BAR */
+/* ==========================================================================
+   2. MATCH TICKER BANNER BAR
+   ========================================================================== */
 .ticker-wrap {
     width: 100%;
     overflow: hidden;
@@ -45,12 +50,9 @@ body {
     color: var(--text-light);
 }
 
-@keyframes marquee {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-50%, 0, 0); }
-}
-
-/* 2. OPTIMIZED LAPTOP BANNER HERO CONTAINER */
+/* ==========================================================================
+   3. HERO HEADER SECTION
+   ========================================================================== */
 .hero-section {
     position: relative;
     height: 40vh;
@@ -116,7 +118,9 @@ body {
     background-color: var(--accent);
 }
 
-/* 3. GRID CONTROLS AND STRUCTURE */
+/* ==========================================================================
+   4. GRID LAYOUT & CARD WRAPPERS
+   ========================================================================== */
 .container {
     max-width: 1400px;
     margin: 40px auto;
@@ -145,7 +149,9 @@ body {
     padding-bottom: 10px;
 }
 
-/* LEADERBOARD ELEMENT LINES */
+/* ==========================================================================
+   5. LEADERBOARD WIDGETS
+   ========================================================================== */
 .player-row {
     display: flex;
     align-items: center;
@@ -155,7 +161,7 @@ body {
 }
 
 .clickable-player:hover {
-    background-color: rgba(255,255,255,0.03);
+    background-color: rgba(255, 255, 255, 0.03);
     cursor: pointer;
 }
 
@@ -219,7 +225,83 @@ body {
     color: var(--accent);
 }
 
-/* 4. SORT FILTER STRIPS CONTROL ELEMENT */
+/* ==========================================================================
+   6. SCROLLABLE NOTICEBOARD NEWS FEED COMPONENTS
+   ========================================================================== */
+.scrollable-news-container {
+    max-height: 290px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Custom modern scrollbar styles for noticeboard box */
+.scrollable-news-container::-webkit-scrollbar, .roster-scroll-list::-webkit-scrollbar {
+    width: 6px;
+}
+.scrollable-news-container::-webkit-scrollbar-track, .roster-scroll-list::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+}
+.scrollable-news-container::-webkit-scrollbar-thumb, .roster-scroll-list::-webkit-scrollbar-thumb {
+    background: #30363d;
+    border-radius: 3px;
+}
+
+.news-item {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+.news-item:last-child {
+    margin-bottom: 0;
+}
+
+.match-hype-card {
+    background: rgba(0, 122, 255, 0.05);
+    border-left: 4px solid var(--info-blue);
+}
+
+.current-ban {
+    background: rgba(255, 69, 58, 0.05);
+    border-left: 4px solid var(--danger);
+}
+
+.news-header-with-img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.news-avatar-box {
+    width: 45px;
+    height: 45px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--danger);
+}
+
+.news-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-tag {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.match-day { background-color: rgba(0, 122, 255, 0.2); color: var(--info-blue); }
+.disciplinary { background-color: rgba(255, 69, 58, 0.2); color: var(--danger); }
+
+/* ==========================================================================
+   7. SORT CONTROLS & STANDINGS TABLE
+   ========================================================================== */
 .team-filter-bar {
     display: flex;
     gap: 12px;
@@ -245,7 +327,6 @@ body {
     border-color: var(--accent);
 }
 
-/* DYNAMIC LOG TABLE DISPLAY CORES */
 .table-responsive {
     width: 100%;
     overflow-x: auto;
@@ -271,34 +352,16 @@ body {
     font-size: 0.8rem;
 }
 
-.text-left {
-    text-align: left !important;
-}
+.text-left { text-align: left !important; }
+.team-row { transition: background-color 0.15s ease; }
+.team-row:hover { background-color: #1c212b !important; cursor: pointer; }
+.team-row:hover .clickable-team { color: var(--accent); }
+.user-team-row { background-color: rgba(57, 255, 20, 0.04) !important; border-left: 4px solid var(--accent); }
+.selected-row-glow { background-color: #21262d !important; border-left: 4px solid var(--accent); }
 
-.team-row {
-    transition: background-color 0.15s ease;
-}
-
-.team-row:hover {
-    background-color: #1c212b !important;
-    cursor: pointer;
-}
-
-.team-row:hover .clickable-team {
-    color: var(--accent);
-}
-
-.user-team-row {
-    background-color: rgba(57, 255, 20, 0.04) !important;
-    border-left: 4px solid var(--accent);
-}
-
-.selected-row-glow {
-    background-color: #21262d !important;
-    border-left: 4px solid var(--accent);
-}
-
-/* 5. TEAM PROFILE ATTRIBUTE EXPANSION PANELS */
+/* ==========================================================================
+   8. TEAM PROFILE SLIDE PANE
+   ========================================================================== */
 .team-details-pane {
     background: #1c212b;
     border: 2px solid var(--accent);
@@ -341,343 +404,74 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Jersey swatch chips configurations */
-.jersey-swatch-row {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.jersey-chip {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    background: var(--card-dark);
-    padding: 6px 12px;
-    border-radius: 4px;
-    border: 1px solid #30363d;
-}
-
-.swatch {
-    width: 16px;
-    height: 16px;
-    border-radius: 3px;
-    display: inline-block;
-}
-
+.jersey-swatch-row { display: flex; gap: 15px; margin-bottom: 15px; }
+.jersey-chip { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; background: var(--card-dark); padding: 6px 12px; border-radius: 4px; border: 1px solid #30363d; }
+.swatch { width: 16px; height: 16px; border-radius: 3px; display: inline-block; }
 .swatch.blue { background-color: #1e40af; }
 .swatch.red { background-color: #b91c1c; }
 .swatch.gray { background-color: #4b5563; }
 .swatch.yellow { background-color: #facc15; }
 .swatch.black { background-color: #000000; }
 
-/* Squad Roster scrolling display lines layout */
-.roster-scroll-list {
-    max-height: 250px;
-    overflow-y: auto;
-    border: 1px solid #30363d;
-    background: var(--card-dark);
-    border-radius: 6px;
-    padding: 10px;
-}
+.roster-scroll-list { max-height: 250px; overflow-y: auto; border: 1px solid #30363d; background: var(--card-dark); border-radius: 6px; padding: 10px; }
+.roster-player-line { font-size: 0.9rem; padding: 8px 5px; border-bottom: 1px solid #21262d; }
+.roster-player-line:last-child { border-bottom: none; }
+.pane-thumb { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
 
-.roster-player-line {
-    font-size: 0.9rem;
-    padding: 8px 5px;
-    border-bottom: 1px solid #21262d;
-}
-
-.roster-player-line:last-child {
-    border-bottom: none;
-}
-
-.pane-thumb {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--accent);
-}
-
-/* 6. OVERLAY INTERACTIVE POPUP DIALOG CARDS */
-.modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.85);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    backdrop-filter: blur(4px);
-}
-
-.player-card-modal {
-    background-color: var(--card-dark);
-    border: 2px solid var(--accent);
-    border-radius: 16px;
-    width: 100%;
-    max-width: 380px;
-    padding: 30px;
-    position: relative;
-    text-align: center;
-    animation: fadeIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: color 0.15s ease;
-}
-
+/* ==========================================================================
+   9. INTERACTIVE POPUP MODALS & LIGHTBOX VIEWERS
+   ========================================================================== */
+.modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px); }
+.player-card-modal { background-color: var(--card-dark); border: 2px solid var(--accent); border-radius: 16px; width: 100%; max-width: 380px; padding: 30px; position: relative; text-align: center; animation: fadeIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.close-modal { position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; transition: color 0.15s ease; }
 .close-modal:hover { color: #fff; }
+.modal-card-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 25px; }
+.modal-avatar-circle { width: 90px; height: 90px; border-radius: 50%; background-color: #21262d; border: 3px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 15px; overflow: hidden; }
+.modal-player-team { font-size: 0.85rem; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-top: 5px; letter-spacing: 0.5px; }
+.modal-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.modal-stat-box { background: #0d0f12; border: 1px solid #30363d; padding: 12px; border-radius: 8px; }
+.stat-lbl { display: block; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px; }
+.stat-val { font-size: 1.4rem; font-weight: 800; color: #fff; }
 
-.modal-card-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 25px;
-}
+.lightbox-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.95); z-index: 2000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); cursor: zoom-out; }
+.lightbox-content { max-width: 90%; max-height: 85vh; object-fit: contain; border: 3px solid var(--accent); border-radius: 8px; box-shadow: 0 0 30px rgba(57, 255, 20, 0.2); animation: zoomEffect 0.2s ease-out; }
+.lightbox-close { position: absolute; top: 25px; right: 30px; background: rgba(255, 69, 58, 0.15); border: 1px solid var(--danger); color: var(--danger); font-weight: 700; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: 0.2s ease; }
+.lightbox-close:hover { background: var(--danger); color: #fff; }
+.clickable-photo { transition: transform 0.15s ease, border-color 0.15s ease; }
+.clickable-photo:hover { transform: scale(1.08); border-color: var(--accent) !important; }
 
-.modal-avatar-circle {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background-color: #21262d;
-    border: 3px solid var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    margin-bottom: 15px;
-    overflow: hidden;
-}
-
-.modal-player-team {
-    font-size: 0.85rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-top: 5px;
-    letter-spacing: 0.5px;
-}
-
-.modal-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-.modal-stat-box {
-    background: #0d0f12;
-    border: 1px solid #30363d;
-    padding: 12px;
-    border-radius: 8px;
-}
-
-.stat-lbl {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
-
-.stat-val {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: #fff;
-}
-
-/* 7. FULL-SCREEN LIGHTBOX IMAGE VIEWER RULES */
-.lightbox-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.95);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(8px);
-    cursor: zoom-out;
-}
-
-.lightbox-content {
-    max-width: 90%;
-    max-height: 85vh;
-    object-fit: contain;
-    border: 3px solid var(--accent);
-    border-radius: 8px;
-    box-shadow: 0 0 30px rgba(57, 255, 20, 0.2);
-    animation: zoomEffect 0.2s ease-out;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 25px;
-    right: 30px;
-    background: rgba(255, 69, 58, 0.15);
-    border: 1px solid var(--danger);
-    color: var(--danger);
-    font-weight: 700;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: 0.2s ease;
-}
-
-.lightbox-close:hover {
-    background: var(--danger);
-    color: #fff;
-}
-
-.clickable-photo {
-    transition: transform 0.15s ease, border-color 0.15s ease;
-}
-
-.clickable-photo:hover {
-    transform: scale(1.08);
-    border-color: var(--accent) !important;
-}
-
-/* 8. LEAGUE NEWS NOTICE BOARD ELEMENTS */
-.news-header-with-img {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.news-avatar-box {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 2px solid var(--danger);
-}
-
-.news-avatar-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.news-item {
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-.current-ban {
-    background: rgba(255, 69, 58, 0.05);
-    border-left: 4px solid var(--danger);
-}
-
-.news-tag {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-.disciplinary {
-    background-color: rgba(255, 69, 58, 0.2);
-    color: var(--danger);
-}
-
-/* 9. MATCH SCHEDULING SECTIONS */
-.fixtures-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.fixture-row {
-    background-color: var(--card-dark);
-    border: 1px solid #21262d;
-    border-radius: 8px;
-    padding: 15px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
+/* ==========================================================================
+   12. INTERACTIVE FIXTURES & MATCH SCHEDULE
+   ========================================================================== */
+.fixtures-grid { display: flex; flex-direction: column; gap: 15px; }
+.fixture-row { background-color: var(--card-dark); border: 1px solid #21262d; border-radius: 8px; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
 .user-game { border-left: 4px solid var(--accent); }
 .fix-time { font-weight: 700; color: var(--text-muted); font-size: 0.9rem; }
 .fix-teams { flex-grow: 1; font-weight: 600; font-size: 1.05rem; display: flex; align-items: center; gap: 15px; }
 .vs { color: var(--accent); font-size: 0.8rem; font-weight: 800; }
-
-.map-link {
-    background-color: #21262d;
-    color: var(--text-light);
-    padding: 8px 16px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: 0.2s ease;
-    border: 1px solid #30363d;
-}
-
+.map-link { background-color: #21262d; color: var(--text-light); padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: 0.2s ease; border: 1px solid #30363d; }
 .map-link:hover { background-color: var(--accent); color: #000; }
 
-/* 10. MARKETING CLOSING UPSELL ELEMENT BAR */
-.upsell-section {
-    background: linear-gradient(135deg, #161a22 0%, #0d0f12 100%);
-    border: 2px dashed var(--accent);
-    border-radius: 12px;
-    padding: 40px;
-    text-align: center;
-    margin-top: 50px;
-}
+.interactive-fixture { transition: background-color 0.15s ease; cursor: pointer; }
+.interactive-fixture:hover { background-color: #1c212b !important; border-color: var(--accent); }
 
-.btn-accent {
-    background-color: var(--accent);
-    color: #000;
-    padding: 12px 24px;
-    text-decoration: none;
-    font-weight: 700;
-    border-radius: 6px;
-    display: inline-block;
-    transition: 0.2s ease;
-}
-
+/* ==========================================================================
+   13. MARKETING UPSELL FOOTER COMPONENT
+   ========================================================================== */
+.upsell-section { background: linear-gradient(135deg, #161a22 0%, #0d0f12 100%); border: 2px dashed var(--accent); border-radius: 12px; padding: 40px; text-align: center; margin-top: 50px; }
+.btn-accent { background-color: var(--accent); color: #000; padding: 12px 24px; text-decoration: none; font-weight: 700; border-radius: 6px; display: inline-block; transition: 0.2s ease; }
 .btn-accent:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
 
-/* KEYFRAME ANIMATIONS LAYOUT LINES */
-@keyframes marquee {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-50%, 0, 0); }
-}
+/* ==========================================================================
+   14. KEYFRAME ENGINE ANIMATIONS
+   ========================================================================== */
+@keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes zoomEffect { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes zoomEffect {
-    from { transform: scale(0.95); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-/* 11. ADAPTIVE PHONE MEDIA VIEWPORT BREAKPOINTS */
+/* ==========================================================================
+   15. MOBILE BREAKPOINTS
+   ========================================================================== */
 @media(max-width: 768px) {
     .container { padding: 0 15px; }
     .fixture-row { flex-direction: column; align-items: flex-start; }

@@ -8,15 +8,17 @@
 </head>
 <body>
 
+    <!-- 1. AUTOMATIC SCROLLING TICKER -->
     <div class="ticker-wrap">
         <div class="ticker" id="matchTicker">
             <span class="ticker-item">⚽ LAST RESULT: Red Devils FC 2 - 4 The GOAT Barbers OUFC U-21</span>
-            <span class="ticker-item">🔥 NEXT MATCH: Concept Physio vs Sterling United A (Tue 6:30PM @ Beasley 1)</span>
+            <span class="ticker-item">🔥 TONIGHT: Concept Physio vs ICLEAN4U Roasters (6:30PM @ Beasley 1)</span>
             <span class="ticker-item">⏱️ LEAGUE LEADER: ICLEAN4U Roasters remain undefeated at the top of the log!</span>
             <span class="ticker-item">🛑 DISCIPLINE: 10-Game Suspension Issued in Division 2 Central</span>
         </div>
     </div>
 
+    <!-- 2. HERO HEADER SECTION -->
     <header class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -27,17 +29,18 @@
         </div>
     </header>
 
+    <!-- 3. MAIN PORTAL CONTENT -->
     <main class="container">
         
+        <!-- LEADERBOARDS GRID -->
         <section class="stats-grid">
+            <!-- GOLDEN BOOT LEADERBOARD -->
             <div class="card">
                 <h2>👑 Golden Boot Race</h2>
                 <div class="leaderboard-list">
                     <div class="player-row clickable-player" onclick="openPlayerModal('marvin')">
                         <span class="rank">1</span>
-                        <div class="player-avatar">
-                            <div class="avatar-placeholder">👤</div>
-                        </div>
+                        <div class="player-avatar"><div class="avatar-placeholder">👤</div></div>
                         <div class="player-info">
                             <span class="player-name">Marvin Morgan</span>
                             <span class="player-team">ICLEAN4U Roasters</span>
@@ -46,9 +49,7 @@
                     </div>
                     <div class="player-row clickable-player" onclick="openPlayerModal('anthony')">
                         <span class="rank">2</span>
-                        <div class="player-avatar">
-                            <div class="avatar-placeholder">👤</div>
-                        </div>
+                        <div class="player-avatar"><div class="avatar-placeholder">👤</div></div>
                         <div class="player-info">
                             <span class="player-name">Anthony Francis</span>
                             <span class="player-team">ICLEAN4U Roasters</span>
@@ -58,6 +59,7 @@
                 </div>
             </div>
 
+            <!-- PLAYMAKER LEADERBOARD -->
             <div class="card">
                 <h2>🎯 Playmaker Award</h2>
                 <div class="leaderboard-list">
@@ -75,23 +77,41 @@
                 </div>
             </div>
 
-            <div class="card news-card">
+            <!-- LEAGUE NOTICEBOARD (NOW SCROLLABLE NEWS FEED) -->
+            <div class="card">
                 <h2>📢 League Noticeboard</h2>
-                <div class="news-item current-ban">
-                    <div class="news-header-with-img">
-                        <div class="news-text-side">
-                            <span class="news-tag disciplinary">Disciplinary</span>
-                            <h3>Bekim Issued 10-Game Suspension</h3>
+                <div class="scrollable-news-container">
+                    
+                    <!-- News Item 1: The Big Match Hype -->
+                    <div class="news-item match-hype-card">
+                        <div class="news-header-with-img">
+                            <div class="news-text-side">
+                                <span class="news-tag match-day">Matchday Feature</span>
+                                <h3>Big Game Tonight: No. 1 vs No. 12</h3>
+                            </div>
                         </div>
-                        <div class="news-avatar-box">
-                            <img src="bekim.jpeg" alt="Bekim" class="news-avatar-img clickable-photo" onclick="expandImageViewer(event, 'bekim.jpeg')">
-                        </div>
+                        <p>All eyes are on Beasley 1 at 6:30 PM. Will league leaders ICLEAN4U finally drop points, or will Concept Physio spark an upset and start climbing the ladder?</p>
                     </div>
-                    <p>Following a review of official match reports from last week's fixture, league management has issued an automatic suspension notice.</p>
+
+                    <!-- News Item 2: Bekim Suspension -->
+                    <div class="news-item current-ban">
+                        <div class="news-header-with-img">
+                            <div class="news-text-side">
+                                <span class="news-tag disciplinary">Disciplinary</span>
+                                <h3>Bekim Issued 10-Game Suspension</h3>
+                            </div>
+                            <div class="news-avatar-box">
+                                <img src="bekim.jpeg" alt="Bekim" class="news-avatar-img clickable-photo" onclick="expandImageViewer(event, 'bekim.jpeg')">
+                            </div>
+                        </div>
+                        <p>Following an official review of match official sheets, league management has executed an automatic disciplinary suspension notice.</p>
+                    </div>
+
                 </div>
             </div>
         </section>
 
+        <!-- 4. LEAGUE LOG STANDINGS SECTION -->
         <section id="standings-section" class="table-card">
             <h2>📊 League Standings (Division 2)</h2>
             
@@ -154,6 +174,7 @@
             </div>
         </section>
 
+        <!-- 5. PLAYER INSPECTION MODAL -->
         <div id="playerModal" class="modal-backdrop" style="display: none;">
             <div class="player-card-modal">
                 <button class="close-modal" onclick="closePlayerModal()">✕</button>
@@ -170,32 +191,41 @@
             </div>
         </div>
 
+        <!-- 6. SCREEN-FIT LIGHTBOX IMAGE VIEWER -->
         <div id="lightboxViewer" class="lightbox-overlay" style="display: none;" onclick="closeImageViewer()">
             <button class="lightbox-close">✕ Close Screen</button>
             <img id="lightboxTargetImg" class="lightbox-content" src="" alt="Expanded View">
         </div>
 
+        <!-- 7. UPCOMING FIXTURES (LINKS REDIRECT TO standalone TARGET SUBPAGE) -->
         <section class="fixtures-section">
-            <h2>📅 Next Match Day Schedule (Tue 7/14/2026)</h2>
+            <h2>📅 Today's Match Day Schedule (Tue 6/16/2026)</h2>
             <div class="fixtures-grid">
-                <div class="fixture-row user-game">
+                
+                <!-- Match Row 1 (Concept vs IClean) -->
+                <div class="fixture-row user-game interactive-fixture" onclick="window.location.href='match-report.html?match=concept-iclean'">
                     <div class="fix-time">6:30 PM</div>
-                    <div class="fix-teams"><span>Concept Physio</span><span class="vs">vs</span><span>Sterling United A</span></div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Beasley+Park+Lake+Country+BC" target="_blank" class="map-link">📍 Beasley 1</a>
+                    <div class="fix-teams"><span>Concept Physio</span><span class="vs">vs</span><span>ICLEAN4U Roasters</span></div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Beasley+Park+Lake+Country+BC" target="_blank" class="map-link" onclick="event.stopPropagation();">📍 Beasley 1</a>
                 </div>
-                <div class="fixture-row">
+                
+                <!-- Match Row 2 -->
+                <div class="fixture-row interactive-fixture" onclick="window.location.href='match-report.html?match=iclean-orchard'">
                     <div class="fix-time">7:00 PM</div>
                     <div class="fix-teams"><span>ICLEAN4U Roasters</span><span class="vs">vs</span><span>Orchard Valley FC</span></div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Mission+Sports+Fields+Kelowna+BC" target="_blank" class="map-link">📍 Mission 13</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Mission+Sports+Fields+Kelowna+BC" target="_blank" class="map-link" onclick="event.stopPropagation();">📍 Mission 13</a>
                 </div>
-                <div class="fixture-row">
+                
+                <!-- Match Row 3 -->
+                <div class="fixture-row interactive-fixture" onclick="window.location.href='match-report.html?match=ocorp-reddevils'">
                     <div class="fix-time">7:00 PM</div>
                     <div class="fix-teams"><span>Ocorp Apna United</span><span class="vs">vs</span><span>Red Devils FC</span></div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Mission+Sports+Fields+Kelowna+BC" target="_blank" class="map-link">📍 Mission 14</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Mission+Sports+Fields+Kelowna+BC" target="_blank" class="map-link" onclick="event.stopPropagation();">📍 Mission 14</a>
                 </div>
             </div>
         </section>
 
+        <!-- INSTAGRAM UPSELL BAR -->
         <section id="gallery" class="upsell-section">
             <h2>Want Your Professional Player Card Updated?</h2>
             <p>Elevate your presence on the league hub. Book an exclusive individual or team match-day shoot package.</p>
@@ -258,12 +288,11 @@
                     <div class="jersey-chip"><span class="swatch black"></span> Away (Black)</div>
                 `;
                 
-                // DEVONIE ALLEN ACCURATELY TIED TO YOUR PREFERENTIAL LOCAL HIGH-RES IMAGE
                 const conceptRoster = [
                     { name: "Robert Spraggs (Coach/Manager)", img: "" },
                     { name: "Kudakwashe Machisa", img: "https://kmsl.ca/upload/id_photos/4307.jpg" },
                     { name: "Evan Aasen", img: "https://kmsl.ca/upload/id_photos/4081.jpg" },
-                    { name: "Devonie Allen", img: "devani.jpeg" }, // Clean local hookup
+                    { name: "Devonie Allen", img: "devani.jpeg" }, 
                     { name: "Rajied Atkinson", img: "https://kmsl.ca/upload/id_photos/4477.jpg" },
                     { name: "Brennan Bohmer", img: "https://kmsl.ca/upload/id_photos/4071.jpg" },
                     { name: "Ryan Commance", img: "" },
@@ -326,37 +355,26 @@
             imgBox.innerHTML = "👤"; 
 
             if (playerKey === 'marvin') {
-                name.innerText = "Marvin Morgan";
-                team.innerText = "ICLEAN4U Roasters";
-                goals.innerText = "17"; assists.innerText = "0"; age.innerText = "--";
+                name.innerText = "Marvin Morgan"; team.innerText = "ICLEAN4U Roasters"; goals.innerText = "17"; assists.innerText = "0"; age.innerText = "--";
             } else if (playerKey === 'anthony') {
-                name.innerText = "Anthony Francis";
-                team.innerText = "ICLEAN4U Roasters";
-                goals.innerText = "12"; assists.innerText = "0"; age.innerText = "--";
+                name.innerText = "Anthony Francis"; team.innerText = "ICLEAN4U Roasters"; goals.innerText = "12"; assists.innerText = "0"; age.innerText = "--";
             } else if (playerKey === 'kuda') {
-                name.innerText = "Kuda Machisa";
-                team.innerText = "Concept Physio";
-                goals.innerText = "0"; assists.innerText = "5"; age.innerText = "20"; 
+                name.innerText = "Kuda Machisa"; team.innerText = "Concept Physio"; goals.innerText = "0"; assists.innerText = "5"; age.innerText = "20"; 
                 imgBox.innerHTML = `<img src="https://kmsl.ca/upload/id_photos/4307.jpg" class="clickable-photo" onclick="expandImageViewer(event, 'https://kmsl.ca/upload/id_photos/4307.jpg')" style="width:100%;height:100%;object-fit:cover;border-radius:50%;cursor:pointer;">`;
             }
         }
 
-        function closePlayerModal() {
-            document.getElementById('playerModal').style.display = 'none';
-        }
+        function closePlayerModal() { document.getElementById('playerModal').style.display = 'none'; }
 
         function expandImageViewer(event, imagePath) {
             event.stopPropagation(); 
             const viewer = document.getElementById('lightboxViewer');
             const targetImg = document.getElementById('lightboxTargetImg');
-            
             targetImg.src = imagePath;
             viewer.style.display = 'flex';
         }
 
-        function closeImageViewer() {
-            document.getElementById('lightboxViewer').style.display = 'none';
-        }
+        function closeImageViewer() { document.getElementById('lightboxViewer').style.display = 'none'; }
     </script>
 </body>
 </html>

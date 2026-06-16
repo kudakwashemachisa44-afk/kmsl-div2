@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMSL Match Center | Live Report</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .match-center-header { background: #161a22; border-bottom: 2px solid var(--accent); padding: 30px 10%; text-align: center; position: relative; }
+        .back-link { position: absolute; top: 20px; left: 5%; color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .match-vs-display { display: flex; align-items: center; justify-content: center; gap: 40px; margin: 20px 0; font-size: 1.8rem; font-weight: 800; }
+        .match-meta-info { color: var(--text-muted); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .match-tabs-navbar { display: flex; justify-content: center; background: #000; border-bottom: 1px solid #21262d; overflow-x: auto; }
+        .match-tab-btn { background: transparent; border: none; color: var(--text-muted); padding: 15px 25px; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap; transition: 0.2s; }
+        .match-tab-btn.active, .match-tab-btn:hover { color: var(--accent); border-bottom-color: var(--accent); }
+        .content-container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+        .report-tab-pane { background: var(--card-dark); border: 1px solid #21262d; border-radius: 12px; padding: 30px; display: none; animation: fadeIn 0.3s ease; }
+        .report-tab-pane.active { display: block; }
+        .grid-2col { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .metric-line { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #21262d; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+
+    <!-- STAGE HEADER CONTROLS -->
+    <header class="match-center-header">
+        <a href="index.html" class="back-link">⬅ Back to Portal Table</a>
+        <div class="match-meta-info">KMSL Division 2 • Match Center</div>
+        <div class="match-vs-display">
+            <span id="homeTeamName">Home Team</span>
+            <span style="color:var(--accent); font-size: 1.2rem; background: rgba(57,255,20,0.1); padding: 4px 12px; border-radius: 4px;">VS</span>
+            <span id="awayTeamName">Visiting Team</span>
+        </div>
+        <div id="matchTimeLocation" class="match-meta-info" style="color:var(--text-muted); font-size:0.85rem;">6:30 PM @ Beasley 1</div>
+    </header>
+
+    <!-- LIVE SUB-TAB NAVIGATION STRIP -->
+    <nav class="match-tabs-navbar">
+        <button class="match-tab-btn active" onclick="switchReportTab(event, 'overview')">Overview</button>
+        <button class="match-tab-btn" onclick="switchReportTab(event, 'lineup')">Lineup</button>
+        <button class="match-tab-btn" onclick="switchReportTab(event, 'h2h')">Head to Head</button>
+        <button class="match-tab-btn" onclick="switchReportTab(event, 'officials')">Match Officials</button>
+        <button class="match-tab-btn" onclick="switchReportTab(event, 'weather')">Weather</button>
+        <button class="match-tab-btn" onclick="switchReportTab(event, 'stats')">Stats Analysis</button>
+        <button class="match-tab-btn" onclick="window.location.href='index.html#standings-section'">📋 League Table</button>
+    </nav>
+
+    <!-- WORKSPACE RELEASES PANES -->
+    <main class="content-container">
+        
+        <!-- 1. OVERVIEW PANE -->
+        <div id="overview" class="report-tab-pane active">
+            <h2>Match Overview</h2>
+            <p id="overviewText" style="margin-top:15px; color:var(--text-muted); line-height:1.6;"></p>
+        </div>
+
+        <!-- 2. LINEUP PANE -->
+        <div id="lineup" class="report-tab-pane">
+            <h2>Official Team Lineups</h2>
+            <div class="grid-2col" style="margin-top:20px;">
+                <div>
+                    <h3 id="lineupHomeTitle" style="color:var(--accent); margin-bottom:10px;">Home</h3>
+                    <div id="homeLineupList" style="color:var(--text-muted); line-height:1.8;">Roster data locked until match check-in.</div>
+                </div>
+                <div>
+                    <h3 id="lineupAwayTitle" style="color:var(--accent); margin-bottom:10px;">Away</h3>
+                    <div id="awayLineupList" style="color:var(--text-muted); line-height:1.8;">Roster data locked until match check-in.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. HEAD TO HEAD PANE -->
+        <div id="h2h" class="report-tab-pane">
+            <h2>Historical Comparison</h2>
+            <div style="margin-top:20px;">
+                <div class="metric-line"><span>Recent Match Forms</span><span style="color:var(--accent)">W - D - W vs L - L - W</span></div>
+                <div class="metric-line"><span>Average Goals Per Match</span><span>3.2 vs 1.1</span></div>
+                <div class="metric-line"><span>Clean Sheets Cleared</span><span>4 vs 1</span></div>
+            </div>
+        </div>
+
+        <!-- 4. OFFICIALS PANE -->
+        <div id="officials" class="report-tab-pane">
+            <h2>Match Official Appointments</h2>
+            <div style="margin-top:15px; color:var(--text-muted);">
+                <p><strong>Center Referee:</strong> Appointed by KMSL Ref Association Pool</p>
+                <p style="margin-top:10px;"><strong>Assistant Referee 1:</strong> Assigned Pool Official</p>
+                <p style="margin-top:10px;"><strong>Assistant Referee 2:</strong> Assigned Pool Official</p>
+            </div>
+        </div>
+
+        <!-- 5. WEATHER PANE -->
+        <div id="weather" class="report-tab-pane">
+            <h2>Pitch Conditions & Forecast</h2>
+            <div style="margin-top:15px; color:var(--text-muted);">
+                <p>☀️ <strong>Condition:</strong> Clear Skies</p>
+                <p style="margin-top:10px;">🌡️ <strong>Temperature:</strong> 24°C / 75°F (Kickoff)</p>
+                <p style="margin-top:10px;">💨 <strong>Wind Metrics:</strong> 8 km/h NW</p>
+            </div>
+        </div>
+
+        <!-- 6. STATS PANE -->
+        <div id="stats" class="report-tab-pane">
+            <h2>Team Scoring Metrics</h2>
+            <div style="margin-top:20px;">
+                <div class="metric-line"><span>Attacking Intensity</span><span>High vs Counter-Attack Baseline</span></div>
+                <div class="metric-line"><span>Possession Index Avg</span><span>58% vs 42%</span></div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // READING PARAMS TO DECODE MATCH DATA VARIATIONS
+        const urlParams = new URLSearchParams(window.location.search);
+        const matchKey = urlParams.get('match') || 'concept-iclean';
+
+        const homeTeam = document.getElementById('homeTeamName');
+        const awayTeam = document.getElementById('awayTeamName');
+        const metaField = document.getElementById('matchTimeLocation');
+        const overviewText = document.getElementById('overviewText');
+
+        if (matchKey === 'concept-iclean') {
+            homeTeam.innerText = "ICLEAN4U Roasters";
+            awayTeam.innerText = "Concept Physio";
+            metaField.innerText = "6:30 PM • Tuesday, June 16, 2026 @ Beasley 1";
+            overviewText.innerText = "A massive Division 2 encounter under the lights tonight. The undefeated, number one ranked ICLEAN4U Roasters go face-to-face against Concept Physio Vernon. Concept is tracking tactical refinements to catch the league leaders flat-footed on fast transitions and hold the line cleanly to climb the standing logs.";
+            
+            document.getElementById('lineupHomeTitle').innerText = "ICLEAN4U Roasters";
+            document.getElementById('lineupAwayTitle').innerText = "Concept Physio";
+            document.getElementById('homeLineupList').innerHTML = "⚽ Marvin Morgan<br>🏃 Anthony Francis<br>🏃 Jackson Zink<br>🏃 Robert Berger";
+            document.getElementById('awayLineupList').innerHTML = "🌟 Kuda Machisa<br>🌟 Tapiwa Mutembwa<br>🌟 Bekim Maliqi<br>🏃 Evan Aasen";
+        } else if (matchKey === 'iclean-orchard') {
+            homeTeam.innerText = "ICLEAN4U Roasters";
+            awayTeam.innerText = "Orchard Valley FC";
+            metaField.innerText = "7:00 PM • Tuesday, June 16, 2026 @ Mission 13";
+            overviewText.innerText = "Mid-season showcase fixture pitting the top tier attacking line of the Roasters against a rigid, technical Orchard Valley tactical configuration.";
+        } else {
+            homeTeam.innerText = "Ocorp Apna United";
+            awayTeam.innerText = "Red Devils FC";
+            metaField.innerText = "7:00 PM • Tuesday, June 16, 2026 @ Mission 14";
+            overviewText.innerText = "Mid-table battle break down as Red Devils look to deploy aggressive offensive movements to climb closer to top-four contention metrics.";
+        }
+
+        function switchReportTab(event, tabId) {
+            document.querySelectorAll('.match-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.report-tab-pane').forEach(p => p.classList.remove('active'));
+            
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
