@@ -8,17 +8,15 @@
 </head>
 <body>
 
-    <!-- 1. AUTOMATIC SCROLLING TICKER -->
     <div class="ticker-wrap">
         <div class="ticker" id="matchTicker">
             <span class="ticker-item">⚽ LAST RESULT: Red Devils FC 2 - 4 The GOAT Barbers OUFC U-21</span>
-            <span class="ticker-item">🔥 TONIGHT: Concept Physio vs ICLEAN4U Roasters (6:30PM @ Beasley 1)</span>
+            <span class="ticker-item">🔥 TONIGHT: Concept Physio Vernon vs ICLEAN4U Roasters (6:30PM @ Beasley 1)</span>
             <span class="ticker-item">⏱️ LEAGUE LEADER: ICLEAN4U Roasters remain undefeated at the top of the log!</span>
             <span class="ticker-item">🛑 DISCIPLINE: 10-Game Suspension Issued in Division 2 Central</span>
         </div>
     </div>
 
-    <!-- 2. HERO HEADER SECTION -->
     <header class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -29,12 +27,9 @@
         </div>
     </header>
 
-    <!-- 3. MAIN PORTAL CONTENT -->
     <main class="container">
         
-        <!-- LEADERBOARDS GRID -->
         <section class="stats-grid">
-            <!-- GOLDEN BOOT LEADERBOARD -->
             <div class="card">
                 <h2>👑 Golden Boot Race</h2>
                 <div class="leaderboard-list">
@@ -59,7 +54,6 @@
                 </div>
             </div>
 
-            <!-- PLAYMAKER LEADERBOARD -->
             <div class="card">
                 <h2>🎯 Playmaker Award</h2>
                 <div class="leaderboard-list">
@@ -70,19 +64,16 @@
                         </div>
                         <div class="player-info">
                             <span class="player-name">Kuda Machisa</span>
-                            <span class="player-team">Concept Physio</span>
+                            <span class="player-team">Concept Physio Vernon</span>
                         </div>
                         <span class="stat-count">5 Assists</span>
                     </div>
                 </div>
             </div>
 
-            <!-- LEAGUE NOTICEBOARD (NOW SCROLLABLE NEWS FEED) -->
             <div class="card">
                 <h2>📢 League Noticeboard</h2>
                 <div class="scrollable-news-container">
-                    
-                    <!-- News Item 1: The Big Match Hype -->
                     <div class="news-item match-hype-card">
                         <div class="news-header-with-img">
                             <div class="news-text-side">
@@ -90,10 +81,8 @@
                                 <h3>Big Game Tonight: No. 1 vs No. 12</h3>
                             </div>
                         </div>
-                        <p>All eyes are on Beasley 1 at 6:30 PM. Will league leaders ICLEAN4U finally drop points, or will Concept Physio spark an upset and start climbing the ladder?</p>
+                        <p>All eyes are on Beasley 1 at 6:30 PM. Will league leaders ICLEAN4U finally drop points, or will Concept Physio Vernon spark an upset?</p>
                     </div>
-
-                    <!-- News Item 2: Bekim Suspension -->
                     <div class="news-item current-ban">
                         <div class="news-header-with-img">
                             <div class="news-text-side">
@@ -104,14 +93,12 @@
                                 <img src="bekim.jpeg" alt="Bekim" class="news-avatar-img clickable-photo" onclick="expandImageViewer(event, 'bekim.jpeg')">
                             </div>
                         </div>
-                        <p>Following an official review of match official sheets, league management has executed an automatic disciplinary suspension notice.</p>
+                        <p>League management automatically executes notice following an official review of central tier match logs this week.</p>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- 4. LEAGUE LOG STANDINGS SECTION -->
         <section id="standings-section" class="table-card">
             <h2>📊 League Standings (Division 2)</h2>
             
@@ -119,25 +106,6 @@
                 <button class="filter-btn active" id="sortPosBtn" onclick="sortLog('position')">Default Position</button>
                 <button class="filter-btn" id="sortAlphaBtn" onclick="sortLog('alphabetical')">Sort Alphabetical</button>
                 <button class="filter-btn" id="sortGdBtn" onclick="sortLog('gd')">Sort Goal Difference</button>
-            </div>
-
-            <div id="teamDetailsCard" class="team-details-pane" style="display: none;">
-                <div class="pane-header">
-                    <h3 id="detailsTeamName">Team Profile</h3>
-                    <button class="close-pane" onclick="closeDetails()">✕ Close Panel</button>
-                </div>
-                <div class="pane-content-grid">
-                    <div class="pane-column">
-                        <h4>👕 Team Identity & Colors</h4>
-                        <div class="jersey-swatch-row" id="jerseyContainer"></div>
-                        <h4 style="margin-top: 15px;">🏆 Club Standing & Status</h4>
-                        <p id="detailsTeamBio"></p>
-                    </div>
-                    <div class="pane-column">
-                        <h4>📋 Official Squad Roster</h4>
-                        <div class="roster-scroll-list" id="rosterNamesList"></div>
-                    </div>
-                </div>
             </div>
 
             <div class="table-responsive">
@@ -155,26 +123,25 @@
                         </tr>
                     </thead>
                     <tbody id="tableBody">
-                        <tr class="team-row" data-pos="1" data-name="ICLEAN4U Roasters" data-gd="41" onclick="openTeamProfile('iclean')"><td>1</td><td class="text-left clickable-team">ICLEAN4U Roasters</td><td>9</td><td>8</td><td>1</td><td>0</td><td>+41</td><td><strong>25</strong></td></tr>
-                        <tr class="team-row" data-pos="2" data-name="Sterling United A" data-gd="34" onclick="openTeamProfile('sterling')"><td>2</td><td class="text-left clickable-team">Sterling United A</td><td>9</td><td>8</td><td>0</td><td>1</td><td>+34</td><td><strong>24</strong></td></tr>
-                        <tr class="team-row" data-pos="3" data-name="Strikers All-Stars" data-gd="25" onclick="openTeamProfile('strikers')"><td>3</td><td class="text-left clickable-team">Strikers All-Stars</td><td>9</td><td>7</td><td>0</td><td>2</td><td>+25</td><td><strong>21</strong></td></tr>
-                        <tr class="team-row" data-pos="4" data-name="Okanagan Wanderers" data-gd="21" onclick="openTeamProfile('wanderers')"><td>4</td><td class="text-left clickable-team">Okanagan Wanderers</td><td>9</td><td>7</td><td>0</td><td>2</td><td>+21</td><td><strong>21</strong></td></tr>
-                        <tr class="team-row" data-pos="5" data-name="The GOAT Barbers OUFC U-21" data-gd="17" onclick="openTeamProfile('barbers')"><td>5</td><td class="text-left clickable-team">The GOAT Barbers OUFC U-21</td><td>9</td><td>6</td><td>0</td><td>3</td><td>+17</td><td><strong>18</strong></td></tr>
-                        <tr class="team-row" data-pos="6" data-name="Orchard Valley FC" data-gd="10" onclick="openTeamProfile('orchard')"><td>6</td><td class="text-left clickable-team">Orchard Valley FC</td><td>9</td><td>5</td><td>0</td><td>4</td><td>+10</td><td><strong>15</strong></td></tr>
-                        <tr class="team-row" data-pos="7" data-name="Red Devils FC" data-gd="5" onclick="openTeamProfile('red-devils')"><td>7</td><td class="text-left clickable-team">Red Devils FC</td><td>9</td><td>4</td><td>0</td><td>5</td><td>+5</td><td><strong>12</strong></td></tr>
-                        <tr class="team-row" data-pos="8" data-name="Solos Energy Rented Mules" data-gd="3" onclick="openTeamProfile('solos')"><td>8</td><td class="text-left clickable-team">Solos Energy Rented Mules</td><td>9</td><td>3</td><td>3</td><td>3</td><td>+3</td><td><strong>12</strong></td></tr>
-                        <tr class="team-row" data-pos="9" data-name="Kalamalka United" data-gd="-6" onclick="openTeamProfile('kalamalka')"><td>9</td><td class="text-left clickable-team">Kalamalka United</td><td>9</td><td>3</td><td>1</td><td>5</td><td>-6</td><td><strong>10</strong></td></tr>
-                        <tr class="team-row" data-pos="10" data-name="Ocorp Apna United" data-gd="-8" onclick="openTeamProfile('ocorp')"><td>10</td><td class="text-left clickable-team">Ocorp Apna United</td><td>9</td><td>3</td><td>1</td><td>5</td><td>-8</td><td><strong>10</strong></td></tr>
-                        <tr class="team-row" data-pos="11" data-name="Okanagan Unathletics" data-gd="-32" onclick="openTeamProfile('unathletics')"><td>11</td><td class="text-left clickable-team">Okanagan Unathletics</td><td>9</td><td>2</td><td>0</td><td>7</td><td>-32</td><td><strong>6</strong></td></tr>
-                        <tr class="team-row user-team-row" data-pos="12" data-name="Concept Physio" data-gd="-38" onclick="openTeamProfile('concept')"><td>12</td><td class="text-left clickable-team">⚡ Concept Physio</td><td>9</td><td>2</td><td>0</td><td>7</td><td>-38</td><td><strong>6</strong></td></tr>
-                        <tr class="team-row" data-pos="13" data-name="Kelowna Union FC" data-gd="-50" onclick="openTeamProfile('union')"><td>13</td><td class="text-left clickable-team">Kelowna Union FC</td><td>9</td><td>1</td><td>1</td><td>7</td><td>-50</td><td><strong>4</strong></td></tr>
-                        <tr class="team-row" data-pos="14" data-name="Westside Apex" data-gd="-22" onclick="openTeamProfile('westside')"><td>14</td><td class="text-left clickable-team">Westside Apex</td><td>9</td><td>0</td><td>1</td><td>8</td><td>-22</td><td><strong>1</strong></td></tr>
+                        <tr class="team-row" data-pos="1" data-name="ICLEAN4U Roasters" data-gd="41" onclick="window.location.href='team-hub.html?team=iclean'"><td>1</td><td class="text-left clickable-team">ICLEAN4U Roasters</td><td>9</td><td>8</td><td>1</td><td>0</td><td>+41</td><td><strong>25</strong></td></tr>
+                        <tr class="team-row" data-pos="2" data-name="Sterling United A" data-gd="34" onclick="window.location.href='team-hub.html?team=sterling'"><td>2</td><td class="text-left clickable-team">Sterling United A</td><td>9</td><td>8</td><td>0</td><td>1</td><td>+34</td><td><strong>24</strong></td></tr>
+                        <tr class="team-row" data-pos="3" data-name="Strikers All-Stars" data-gd="25" onclick="window.location.href='team-hub.html?team=strikers'"><td>3</td><td class="text-left clickable-team">Strikers All-Stars</td><td>9</td><td>7</td><td>0</td><td>2</td><td>+25</td><td><strong>21</strong></td></tr>
+                        <tr class="team-row" data-pos="4" data-name="Okanagan Wanderers" data-gd="21" onclick="window.location.href='team-hub.html?team=wanderers'"><td>4</td><td class="text-left clickable-team">Okanagan Wanderers</td><td>9</td><td>7</td><td>0</td><td>2</td><td>+21</td><td><strong>21</strong></td></tr>
+                        <tr class="team-row" data-pos="5" data-name="The GOAT Barbers OUFC U-21" data-gd="17" onclick="window.location.href='team-hub.html?team=barbers'"><td>5</td><td class="text-left clickable-team">The GOAT Barbers OUFC U-21</td><td>9</td><td>6</td><td>0</td><td>3</td><td>+17</td><td><strong>18</strong></td></tr>
+                        <tr class="team-row" data-pos="6" data-name="Orchard Valley FC" data-gd="10" onclick="window.location.href='team-hub.html?team=orchard'"><td>6</td><td class="text-left clickable-team">Orchard Valley FC</td><td>9</td><td>5</td><td>0</td><td>4</td><td>+10</td><td><strong>15</strong></td></tr>
+                        <tr class="team-row" data-pos="7" data-name="Red Devils FC" data-gd="5" onclick="window.location.href='team-hub.html?team=red-devils'"><td>7</td><td class="text-left clickable-team">Red Devils FC</td><td>9</td><td>4</td><td>0</td><td>5</td><td>+5</td><td><strong>12</strong></td></tr>
+                        <tr class="team-row" data-pos="8" data-name="Solos Energy Rented Mules" data-gd="3" onclick="window.location.href='team-hub.html?team=solos'"><td>8</td><td class="text-left clickable-team">Solos Energy Rented Mules</td><td>9</td><td>3</td><td>3</td><td>3</td><td>+3</td><td><strong>12</strong></td></tr>
+                        <tr class="team-row" data-pos="9" data-name="Kalamalka United" data-gd="-6" onclick="window.location.href='team-hub.html?team=kalamalka'"><td>9</td><td class="text-left clickable-team">Kalamalka United</td><td>9</td><td>3</td><td>1</td><td>5</td><td>-6</td><td><strong>10</strong></td></tr>
+                        <tr class="team-row" data-pos="10" data-name="Ocorp Apna United" data-gd="-8" onclick="window.location.href='team-hub.html?team=ocorp'"><td>10</td><td class="text-left clickable-team">Ocorp Apna United</td><td>9</td><td>3</td><td>1</td><td>5</td><td>-8</td><td><strong>10</strong></td></tr>
+                        <tr class="team-row" data-pos="11" data-name="Okanagan Unathletics" data-gd="-32" onclick="window.location.href='team-hub.html?team=unathletics'"><td>11</td><td class="text-left clickable-team">Okanagan Unathletics</td><td>9</td><td>2</td><td>0</td><td>7</td><td>-32</td><td><strong>6</strong></td></tr>
+                        <tr class="team-row user-team-row" data-pos="12" data-name="Concept Physio Vernon" data-gd="-38" onclick="window.location.href='team-hub.html?team=concept'"><td>12</td><td class="text-left clickable-team">⚡ Concept Physio Vernon</td><td>9</td><td>2</td><td>0</td><td>7</td><td>-38</td><td><strong>6</strong></td></tr>
+                        <tr class="team-row" data-pos="13" data-name="Kelowna Union FC" data-gd="-50" onclick="window.location.href='team-hub.html?team=union'"><td>13</td><td class="text-left clickable-team">Kelowna Union FC</td><td>9</td><td>1</td><td>1</td><td>7</td><td>-50</td><td><strong>4</strong></td></tr>
+                        <tr class="team-row" data-pos="14" data-name="Westside Apex" data-gd="-22" onclick="window.location.href='team-hub.html?team=westside'"><td>14</td><td class="text-left clickable-team">Westside Apex</td><td>9</td><td>0</td><td>1</td><td>8</td><td>-22</td><td><strong>1</strong></td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- 5. PLAYER INSPECTION MODAL -->
         <div id="playerModal" class="modal-backdrop" style="display: none;">
             <div class="player-card-modal">
                 <button class="close-modal" onclick="closePlayerModal()">✕</button>
@@ -191,32 +158,24 @@
             </div>
         </div>
 
-        <!-- 6. SCREEN-FIT LIGHTBOX IMAGE VIEWER -->
         <div id="lightboxViewer" class="lightbox-overlay" style="display: none;" onclick="closeImageViewer()">
             <button class="lightbox-close">✕ Close Screen</button>
             <img id="lightboxTargetImg" class="lightbox-content" src="" alt="Expanded View">
         </div>
 
-        <!-- 7. UPCOMING FIXTURES (LINKS REDIRECT TO standalone TARGET SUBPAGE) -->
         <section class="fixtures-section">
             <h2>📅 Today's Match Day Schedule (Tue 6/16/2026)</h2>
             <div class="fixtures-grid">
-                
-                <!-- Match Row 1 (Concept vs IClean) -->
                 <div class="fixture-row user-game interactive-fixture" onclick="window.location.href='match-report.html?match=concept-iclean'">
                     <div class="fix-time">6:30 PM</div>
-                    <div class="fix-teams"><span>Concept Physio</span><span class="vs">vs</span><span>ICLEAN4U Roasters</span></div>
+                    <div class="fix-teams"><span>Concept Physio Vernon</span><span class="vs">vs</span><span>ICLEAN4U Roasters</span></div>
                     <a href="https://www.google.com/maps/search/?api=1&query=Beasley+Park+Lake+Country+BC" target="_blank" class="map-link" onclick="event.stopPropagation();">📍 Beasley 1</a>
                 </div>
-                
-                <!-- Match Row 2 -->
                 <div class="fixture-row interactive-fixture" onclick="window.location.href='match-report.html?match=iclean-orchard'">
                     <div class="fix-time">7:00 PM</div>
                     <div class="fix-teams"><span>ICLEAN4U Roasters</span><span class="vs">vs</span><span>Orchard Valley FC</span></div>
                     <a href="https://www.google.com/maps/search/?api=1&query=Mission+Sports+Fields+Kelowna+BC" target="_blank" class="map-link" onclick="event.stopPropagation();">📍 Mission 13</a>
                 </div>
-                
-                <!-- Match Row 3 -->
                 <div class="fixture-row interactive-fixture" onclick="window.location.href='match-report.html?match=ocorp-reddevils'">
                     <div class="fix-time">7:00 PM</div>
                     <div class="fix-teams"><span>Ocorp Apna United</span><span class="vs">vs</span><span>Red Devils FC</span></div>
@@ -225,7 +184,6 @@
             </div>
         </section>
 
-        <!-- INSTAGRAM UPSELL BAR -->
         <section id="gallery" class="upsell-section">
             <h2>Want Your Professional Player Card Updated?</h2>
             <p>Elevate your presence on the league hub. Book an exclusive individual or team match-day shoot package.</p>
@@ -256,92 +214,7 @@
             rows.forEach(row => tbody.appendChild(row));
         }
 
-        function openTeamProfile(teamKey) {
-            const pane = document.getElementById('teamDetailsCard');
-            const nameField = document.getElementById('detailsTeamName');
-            const bioField = document.getElementById('detailsTeamBio');
-            const jerseyContainer = document.getElementById('jerseyContainer');
-            const rosterContainer = document.getElementById('rosterNamesList');
-            
-            document.querySelectorAll('.team-row').forEach(r => r.classList.remove('selected-row-glow'));
-            event.currentTarget.classList.add('selected-row-glow');
-
-            pane.style.display = 'block';
-            pane.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-            if (teamKey === 'iclean') {
-                nameField.innerText = "🧼 ICLEAN4U Roasters Team Profile";
-                bioField.innerText = "Ranked #1. High-powered attacking squad controlling Division 2 with an immense +41 goal differential.";
-                jerseyContainer.innerHTML = `
-                    <div class="jersey-chip"><span class="swatch blue"></span> Home (Blue)</div>
-                    <div class="jersey-chip"><span class="swatch red"></span> Away (Red)</div>
-                `;
-                const roster = ["Mihai Chirobocea (Manager)", "Attila Deak (Asst Coach)", "Robert Berger", "Angel Camejo", "Brent Dodge", "Jose Manuel Flores Pérez", "Anthony Francis", "Mitchell Hall", "Johan Hernandez", "Ryan Hulstein", "Maksim Kaziarski", "Rajko Keravica", "Ago Kimpian", "Tristain Moench", "Lance Molzahn", "Marvin Morgan", "Shabani Nsengiyumva", "Alberto Pasqualin", "Ryan Paulson", "Austin Ross", "Craig Roy", "Ryan Wheeler", "Jackson Zink"];
-                rosterContainer.innerHTML = roster.map(p => `<div class="roster-player-line">🏃 ${p}</div>`).join('');
-
-            } else if (teamKey === 'concept') {
-                nameField.innerText = "⚡ Concept Physio Team Profile";
-                bioField.innerText = "Home Base: Vernon, BC. Navigating tactical improvements mid-season to spark a critical run up the competitive division ranks.";
-                
-                jerseyContainer.innerHTML = `
-                    <div class="jersey-chip"><span class="swatch yellow"></span> Home (Yellow)</div>
-                    <div class="jersey-chip"><span class="swatch black"></span> Away (Black)</div>
-                `;
-                
-                const conceptRoster = [
-                    { name: "Robert Spraggs (Coach/Manager)", img: "" },
-                    { name: "Kudakwashe Machisa", img: "https://kmsl.ca/upload/id_photos/4307.jpg" },
-                    { name: "Evan Aasen", img: "https://kmsl.ca/upload/id_photos/4081.jpg" },
-                    { name: "Devonie Allen", img: "devani.jpeg" }, 
-                    { name: "Rajied Atkinson", img: "https://kmsl.ca/upload/id_photos/4477.jpg" },
-                    { name: "Brennan Bohmer", img: "https://kmsl.ca/upload/id_photos/4071.jpg" },
-                    { name: "Ryan Commance", img: "" },
-                    { name: "Brad Conlin (Assistant Manager)", img: "https://kmsl.ca/upload/id_photos/4277.jpg" },
-                    { name: "Michael Conlin", img: "https://kmsl.ca/upload/id_photos/4082.jpg" },
-                    { name: "Adam Fenske", img: "https://kmsl.ca/upload/id_photos/4202.jpg" },
-                    { name: "Sean Harper", img: "https://kmsl.ca/upload/id_photos/4077.jpg" },
-                    { name: "Felipe Hernandez", img: "https://kmsl.ca/upload/id_photos/4065.jpg" },
-                    { name: "Tyler Hrdlitschka", img: "https://kmsl.ca/upload/id_photos/4068.jpg" },
-                    { name: "Lucas Johnson", img: "https://kmsl.ca/upload/id_photos/4268.jpg" },
-                    { name: "Alex Kazimer", img: "https://kmsl.ca/upload/id_photos/4079.jpg" },
-                    { name: "Carter Leahy", img: "https://kmsl.ca/upload/id_photos/4164.jpg" },
-                    { name: "Émeric Lépine", img: "https://kmsl.ca/upload/id_photos/4086.jpg" },
-                    { name: "Bekim Maliqi", img: "bekim.jpeg" }, 
-                    { name: "Jashan Mavi", img: "https://kmsl.ca/upload/id_photos/4085.jpg" },
-                    { name: "Tapiwa Mutembwa", img: "tata.jpeg" }, 
-                    { name: "Ethan Nickoli", img: "https://kmsl.ca/upload/id_photos/4155.jpg" },
-                    { name: "Quinn Soon", img: "https://kmsl.ca/upload/id_photos/4111.jpg" },
-                    { name: "Aidan Spraggs", img: "https://kmsl.ca/upload/id_photos/4042.jpg" },
-                    { name: "Niko Venturas", img: "https://kmsl.ca/upload/id_photos/3606.jpg" },
-                    { name: "Minh Vo", img: "https://kmsl.ca/upload/id_photos/4064.jpg" }
-                ];
-
-                rosterContainer.innerHTML = conceptRoster.map(p => {
-                    let avatarSrc = p.img ? p.img : "";
-                    let avatarHtml = avatarSrc 
-                        ? `<img src="${avatarSrc}" class="pane-thumb clickable-photo" onclick="expandImageViewer(event, '${avatarSrc}')" style="width:30px; height:30px; margin-right:10px; border-radius:50%; object-fit:cover; border:1px solid var(--accent); cursor:pointer;">`
-                        : `<span style="margin-right:10px; font-size:1.1rem;">🏃</span>`;
-                    
-                    if(p.name.includes("Kudakwashe")) {
-                        return `<div class="roster-player-line" style="color:var(--accent); font-weight:700; display:flex; align-items:center;">🌟 ${avatarHtml} ${p.name}</div>`;
-                    }
-                    return `<div class="roster-player-line" style="display:flex; align-items:center;">${avatarHtml} ${p.name}</div>`;
-                }).join('');
-
-            } else {
-                const teamName = event.currentTarget.getAttribute('data-name');
-                nameField.innerText = `🛡️ ${teamName} Profile`;
-                bioField.innerText = "Roster elements syncing from public records database.";
-                jerseyContainer.innerHTML = `<div class="jersey-chip"><span class="swatch gray"></span> Standard Kit</div>`;
-                rosterContainer.innerHTML = `<div class="roster-player-line">🏃 Profile Active - Sync Pending</div>`;
-            }
-        }
-
-        function closeDetails() {
-            document.getElementById('teamDetailsCard').style.display = 'none';
-            document.querySelectorAll('.team-row').forEach(r => r.classList.remove('selected-row-glow'));
-        }
-
+        // RESTORED PLAYER MODAL LOGIC ENGINE
         function openPlayerModal(playerKey) {
             const modal = document.getElementById('playerModal');
             const name = document.getElementById('modalPlayerName');
@@ -355,17 +228,18 @@
             imgBox.innerHTML = "👤"; 
 
             if (playerKey === 'marvin') {
-                name.innerText = "Marvin Morgan"; team.innerText = "ICLEAN4U Roasters"; goals.innerText = "17"; assists.innerText = "0"; age.innerText = "--";
+                name.innerText = "Marvin Morgan"; team.innerText = "ICLEAN4U Roasters"; goals.innerText = "17"; assists.innerText = "0"; age.innerText = "28";
             } else if (playerKey === 'anthony') {
-                name.innerText = "Anthony Francis"; team.innerText = "ICLEAN4U Roasters"; goals.innerText = "12"; assists.innerText = "0"; age.innerText = "--";
+                name.innerText = "Anthony Francis"; team.innerText = "ICLEAN4U Roasters"; goals.innerText = "12"; assists.innerText = "0"; age.innerText = "26";
             } else if (playerKey === 'kuda') {
-                name.innerText = "Kuda Machisa"; team.innerText = "Concept Physio"; goals.innerText = "0"; assists.innerText = "5"; age.innerText = "20"; 
-                imgBox.innerHTML = `<img src="https://kmsl.ca/upload/id_photos/4307.jpg" class="clickable-photo" onclick="expandImageViewer(event, 'https://kmsl.ca/upload/id_photos/4307.jpg')" style="width:100%;height:100%;object-fit:cover;border-radius:50%;cursor:pointer;">`;
+                name.innerText = "Kuda Machisa"; team.innerText = "Concept Physio Vernon"; goals.innerText = "0"; assists.innerText = "5"; age.innerText = "20"; 
+                imgBox.innerHTML = `<img src="https://kmsl.ca/upload/id_photos/4307.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
             }
         }
 
         function closePlayerModal() { document.getElementById('playerModal').style.display = 'none'; }
 
+        // RESTORED LIGHTBOX EXPANDER SCRIPT FUNCTIONS
         function expandImageViewer(event, imagePath) {
             event.stopPropagation(); 
             const viewer = document.getElementById('lightboxViewer');
