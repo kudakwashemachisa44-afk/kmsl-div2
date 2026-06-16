@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMSL Division 2 | Modern Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- 1. AUTOMATIC SCROLLING TICKER -->
+    <div class="ticker-wrap">
+        <div class="ticker" id="matchTicker">
+            <span class="ticker-item">⚽ LAST RESULT: Red Devils FC 2 - 4 The GOAT Barbers OUFC U-21</span>
+            <span class="ticker-item">🔥 NEXT MATCH: Red Devils FC vs Solos Energy Rented Mules (Tue 7:00PM @ Mission 13)</span>
+            <span class="ticker-item">⏱️ UPCOMING: The GOAT Barbers OUFC U-21 vs Sterling United A (Tue 7:00PM @ City Park)</span>
+            <span class="ticker-item">⚡ UPCOMING: Kelowna Union FC vs Ocorp Apna United (Tue 7:15PM @ Glenmore 2)</span>
+            <span class="ticker-item">🛑 DISCIPLINE: 10-Game Suspension Issued in Division 2 Central</span>
+            <span class="ticker-item">📸 MEDIA: Match photos for Concept Physio Vernon vs Okanagan Wanderers now live!</span>
+        </div>
+    </div>
+
+    <!-- 2. HERO HEADER SECTION -->
+    <header class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge">Division 2 Hub</span>
+            <h1>The Beautiful Game, <br><span class="accent-text">Redefined.</span></h1>
+            <p>Track stats, view match galleries, and follow the chase for the Golden Boot.</p>
+            <a href="#gallery" class="btn-primary">View Match Gallery</a>
+        </div>
+    </header>
+
+    <!-- 3. MAIN PORTAL CONTENT -->
+    <main class="container">
+        
+        <!-- LEADERBOARDS SECTION -->
+        <section class="stats-grid">
+            
+            <!-- GOLDEN BOOT LEADERBOARD -->
+            <div class="card">
+                <h2>👑 Golden Boot Race</h2>
+                <div class="leaderboard-list">
+                    <!-- Player 1: Tapiwa -->
+                    <div class="player-row">
+                        <span class="rank">1</span>
+                        <div class="player-avatar">
+                            <img src="tata.jpeg" alt="Tapiwa Mutemwa" class="avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="avatar-placeholder" style="display: none;">📸</div>
+                        </div>
+                        <div class="player-info">
+                            <span class="player-name">Tapiwa Mutemwa</span>
+                            <span class="player-team">Red Devils FC</span>
+                        </div>
+                        <span class="stat-count">8 Goals</span>
+                    </div>
+                    <!-- Player 2: Devani -->
+                    <div class="player-row">
+                        <span class="rank">2</span>
+                        <div class="player-avatar">
+                            <img src="devani.jpeg" alt="Devani" class="avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="avatar-placeholder" style="display: none;">📸</div>
+                        </div>
+                        <div class="player-info">
+                            <span class="player-name">Devani</span>
+                            <span class="player-team">Kalamalka United</span>
+                        </div>
+                        <span class="stat-count">6 Goals</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLAYMAKER (ASSISTS) LEADERBOARD -->
+            <div class="card">
+                <h2>🎯 Playmaker Award</h2>
+                <div class="leaderboard-list">
+                    <!-- Player 1: Kuda -->
+                    <div class="player-row">
+                        <span class="rank">1</span>
+                        <div class="player-avatar">
+                            <!-- Code will search for kuda.jpeg when you add it later -->
+                            <img src="kuda.jpeg" alt="Kuda Machisa" class="avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="avatar-placeholder">📸</div>
+                        </div>
+                        <div class="player-info">
+                            <span class="player-name">Kuda Machisa</span>
+                            <span class="player-team">Red Devils FC</span>
+                        </div>
+                        <span class="stat-count">5 Assists</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEAGUE NEWS & DRAMA FEED -->
+            <div class="card news-card">
+                <h2>📢 League Noticeboard</h2>
+                <div class="news-item current-ban">
+                    <div class="news-header-with-img">
+                        <div class="news-text-side">
+                            <span class="news-tag disciplinary">Disciplinary</span>
+                            <h3>Bekim Issued 10-Game Suspension</h3>
+                        </div>
+                        <div class="news-avatar-box">
+                            <img src="bekim.jpeg" alt="Bekim Celebration" class="news-avatar-img">
+                        </div>
+                    </div>
+                    <p>Following a review of official match reports from last week's fixture, league management has issued an automatic suspension notice.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- PHOTOGRAPHY BRAND UPSELL -->
+        <section id="gallery" class="upsell-section">
+            <h2>Want Your Professional Player Card Updated?</h2>
+            <p>Elevate your presence on the league hub. Book an exclusive individual or team match-day shoot package.</p>
+            <a href="https://www.instagram.com/" target="_blank" class="btn-accent">Message @KB_Media on Instagram</a>
+        </section>
+
+    </main>
+
+    <!-- SIMPLE TICKER ANIMATION SCRIPT -->
+    <script>
+        const ticker = document.getElementById('matchTicker');
+        ticker.innerHTML += ticker.innerHTML;
+    </script>
+</body>
+</html>

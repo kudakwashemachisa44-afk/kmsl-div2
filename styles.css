@@ -1,0 +1,300 @@
+/* RESET & FONTS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root {
+    --bg-dark: #0d0f12;
+    --card-dark: #161a22;
+    --text-light: #ffffff;
+    --text-muted: #8b949e;
+    --accent: #39ff14; /* Neon Volt Green */
+    --accent-hover: #2ecc12;
+    --danger: #ff453a;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+/* 1. MATCH TICKER POSITIONING */
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: #000000;
+    border-bottom: 1px solid #21262d;
+    padding: 10px 0;
+}
+
+.ticker {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 25s linear infinite;
+}
+
+.ticker-item {
+    display: inline-block;
+    padding: 0 2rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+@keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* 2. PREMIUM HERO SECTION */
+.hero-section {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    background: url('background.jpeg') no-repeat center center/cover; /* Matches your exact filename */
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(13, 15, 18, 0.95) 40%, rgba(13, 15, 18, 0.4));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.badge {
+    background: rgba(57, 255, 20, 0.15);
+    color: var(--accent);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-top: 15px;
+    line-height: 1.1;
+}
+
+.accent-text {
+    color: var(--accent);
+}
+
+.hero-content p {
+    color: var(--text-muted);
+    margin: 20px 0 30px 0;
+}
+
+/* BUTTONS */
+.btn-primary {
+    background-color: var(--text-light);
+    color: var(--bg-dark);
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent);
+}
+
+.btn-accent {
+    background-color: var(--accent);
+    color: #000;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 6px;
+    display: inline-block;
+    transition: 0.2s ease;
+}
+
+.btn-accent:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* 3. CARDS & STAT LAYOUT */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background-color: var(--card-dark);
+    border: 1px solid #21262d;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #21262d;
+    padding-bottom: 10px;
+}
+
+/* LEADERBOARD COMPONENTS */
+.player-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #21262d;
+}
+
+.rank {
+    font-weight: 800;
+    width: 25px;
+    color: var(--text-muted);
+}
+
+.player-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    border: 2px solid #30363d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #21262d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.player-info {
+    flex-grow: 1;
+}
+
+.player-name {
+    display: block;
+    font-weight: 600;
+}
+
+.player-team {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.stat-count {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* LEAGUE NEWS STYLING WITH IMAGES */
+.news-header-with-img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.news-avatar-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid var(--danger);
+}
+
+.news-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-item {
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.current-ban {
+    background: rgba(255, 69, 58, 0.05);
+    border-left: 4px solid var(--danger);
+}
+
+.news-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.disciplinary {
+    background-color: rgba(255, 69, 58, 0.2);
+    color: var(--danger);
+}
+
+.news-item h3 {
+    font-size: 1.1rem;
+    margin: 5px 0 0 0;
+}
+
+.news-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* UPSELL BANNER */
+.upsell-section {
+    background: linear-gradient(135deg, #161a22 0%, #0d0f12 100%);
+    border: 2px dashed var(--accent);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.upsell-section h2 {
+    margin-bottom: 10px;
+}
+
+.upsell-section p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
