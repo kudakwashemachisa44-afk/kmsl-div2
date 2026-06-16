@@ -18,7 +18,7 @@
     --danger: #ff453a;
     --info-blue: #007aff;
     
-    /* RESTORED: Deep contrast button colors */
+    /* Deep contrast button colors */
     --btn-dark-text: #0d0f12;
     --insta-brand-green: #15803d; /* Rich, deep forest green for readability */
     --insta-brand-hover: #166534;
@@ -65,7 +65,7 @@ a:visited, a:active {
 }
 
 /* ==========================================================================
-   3. HERO HEADER SECTION & BUTTON FIX
+   3. HERO HEADER SECTION
    ========================================================================== */
 .hero-section {
     position: relative;
@@ -118,7 +118,6 @@ a:visited, a:active {
     margin: 15px 0 25px 0;
 }
 
-/* FIX: Forces the Hero Button to display its original dark text on white */
 .btn-primary {
     background-color: var(--text-light) !important;
     color: var(--btn-dark-text) !important;
@@ -527,6 +526,7 @@ a:visited, a:active {
 .club-tab-pane.active, .report-tab-pane.active { display: block; }
 .pane-column-h4 { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 
+/* Laptop layout desktop grid view */
 .roster-photo-matrix { 
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); 
@@ -561,7 +561,7 @@ a:visited, a:active {
 .metric-line { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #21262d; font-size: 0.95rem; }
 
 /* ==========================================================================
-   12. MARKETING UPSELL FOOTER COMPONENT & CONTRAST FIX
+   12. MARKETING UPSELL FOOTER COMPONENT
    ========================================================================== */
 .upsell-section { 
     background: linear-gradient(135deg, #161a22 0%, #0d0f12 100%); 
@@ -572,7 +572,6 @@ a:visited, a:active {
     margin-top: 50px; 
 }
 
-/* FIX: Changes Instagram box to a high-contrast dark green bar with bold white text */
 .btn-accent { 
     background-color: var(--insta-brand-green) !important; 
     color: var(--text-light) !important; 
@@ -597,7 +596,7 @@ a:visited, a:active {
 @keyframes zoomEffect { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
 /* ==========================================================================
-   14. MOBILE MEDIA VIEWPORT BREAKPOINTS
+   14. MOBILE MEDIA VIEWPORT BREAKPOINTS (STRICT LAYOUT SAFETY)
    ========================================================================== */
 @media(max-width: 768px) {
     .container { padding: 0 12px; margin: 20px auto; }
@@ -605,6 +604,16 @@ a:visited, a:active {
     .team-filter-bar { display: grid; grid-template-columns: 1fr; gap: 8px; width: 100%; }
     .filter-btn { width: 100%; text-align: center; padding: 12px; }
     .hero-section { padding: 0 20px; height: 35vh; }
+
+    /* FIX: Prevents layout collapse by snapping roster cards into a clean 2-column matrix layout */
+    .roster-photo-matrix {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+    
+    .player-photo-card {
+        padding: 12px 8px !important;
+    }
 
     .match-vs-display { 
         flex-direction: column; 
