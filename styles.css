@@ -494,7 +494,7 @@ a:visited, a:active {
     overflow-x: auto; 
     white-space: nowrap;
     -webkit-overflow-scrolling: touch; 
-    padding: 0 10px;
+    padding: 0; /* REMOVED: Blanket parent padding that triggers mobile cut-off */
 }
 .match-tabs-navbar::-webkit-scrollbar, .club-tabs-navbar::-webkit-scrollbar {
     display: none;
@@ -512,6 +512,12 @@ a:visited, a:active {
     font-size: 0.9rem;
     flex-shrink: 0;
 }
+
+/* FIX: Adds targeted horizontal buffer spacing onto the first element only to guarantee text alignment */
+.match-tab-btn:first-child, .club-tab-btn:first-child {
+    padding-left: 20px !important;
+}
+
 .match-tab-btn.active, .match-tab-btn:hover,
 .club-tab-btn.active, .club-tab-btn:hover { 
     color: var(--accent); 
@@ -526,7 +532,6 @@ a:visited, a:active {
 .club-tab-pane.active, .report-tab-pane.active { display: block; }
 .pane-column-h4 { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-/* Laptop layout desktop grid view */
 .roster-photo-matrix { 
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); 
@@ -605,7 +610,6 @@ a:visited, a:active {
     .filter-btn { width: 100%; text-align: center; padding: 12px; }
     .hero-section { padding: 0 20px; height: 35vh; }
 
-    /* FIX: Prevents layout collapse by snapping roster cards into a clean 2-column matrix layout */
     .roster-photo-matrix {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
