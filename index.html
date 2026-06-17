@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KMSL Division 2 | Modern Portal</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2.2">
 </head>
 <body>
 
@@ -71,7 +71,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card news-card">
                 <h2>📢 League Noticeboard</h2>
                 <div class="scrollable-news-container">
                     <div class="news-item match-hype-card">
@@ -196,25 +196,18 @@
         ticker.innerHTML += ticker.innerHTML;
 
         function sortLog(criterion) {
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
             const tbody = document.getElementById('tableBody');
             const rows = Array.from(tbody.querySelectorAll('.team-row'));
-
             if (criterion === 'position') {
-                document.getElementById('sortPosBtn').classList.add('active');
                 rows.sort((a, b) => parseInt(a.getAttribute('data-pos')) - parseInt(b.getAttribute('data-pos')));
             } else if (criterion === 'alphabetical') {
-                document.getElementById('sortAlphaBtn').classList.add('active');
                 rows.sort((a, b) => a.getAttribute('data-name').localeCompare(b.getAttribute('data-name')));
             } else if (criterion === 'gd') {
-                document.getElementById('sortGdBtn').classList.add('active');
                 rows.sort((a, b) => parseInt(b.getAttribute('data-gd')) - parseInt(a.getAttribute('data-gd')));
             }
             rows.forEach(row => tbody.appendChild(row));
         }
 
-        // RESTORED PLAYER MODAL LOGIC ENGINE
         function openPlayerModal(playerKey) {
             const modal = document.getElementById('playerModal');
             const name = document.getElementById('modalPlayerName');
@@ -239,7 +232,6 @@
 
         function closePlayerModal() { document.getElementById('playerModal').style.display = 'none'; }
 
-        // RESTORED LIGHTBOX EXPANDER SCRIPT FUNCTIONS
         function expandImageViewer(event, imagePath) {
             event.stopPropagation(); 
             const viewer = document.getElementById('lightboxViewer');

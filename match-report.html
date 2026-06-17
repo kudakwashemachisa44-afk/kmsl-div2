@@ -4,14 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KMSL Match Center | Live Report Central</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2.2">
+    <style>
+        .back-link-wrapper { position: absolute; top: 15px; left: 5%; }
+        .back-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .back-link:hover { text-decoration: underline; }
+        .match-meta-info { color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; width: 100%; margin-top: 10px; }
+        .match-vs-display { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 10px 0; width: 100%; }
+        .club-name-link { text-decoration: none; color: var(--text-light); font-weight: 800; font-size: clamp(1.1rem, 3.5vw, 2.2rem); transition: color 0.15s ease; flex: 1; }
+        .club-name-link:hover { color: var(--accent); text-decoration: underline; }
+        .match-center-header { background: #161a22; border-bottom: 2px solid var(--accent); padding: 50px 20px 25px 20px; text-align: center; position: relative; }
+        .vs-badge { color: var(--accent); font-size: 0.85rem; background: rgba(57,255,20,0.1); padding: 6px 12px; border-radius: 4px; font-weight: 800; flex-shrink: 0; }
+        .match-tabs-navbar { display: flex; justify-content: flex-start; background: #000000; border-bottom: 1px solid #21262d; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; padding: 0; }
+        .match-tabs-navbar::-webkit-scrollbar { display: none; }
+        .match-tab-btn { background: transparent; border: none; color: var(--text-muted); padding: 15px 20px; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; display: inline-block; transition: 0.2s; font-size: 0.9rem; flex-shrink: 0; }
+        .match-tab-btn:first-child { padding-left: 20px !important; }
+        .match-tab-btn.active, .match-tab-btn:hover { color: var(--accent); border-bottom-color: var(--accent); }
+        .content-container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+        .report-tab-pane { background: var(--card-dark); border: 1px solid #21262d; border-radius: 12px; padding: 25px; display: none; animation: fadeIn 0.3s ease; }
+        .report-tab-pane.active { display: block; }
+        .metric-line { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #21262d; font-size: 0.95rem; }
+        @media(max-width: 768px) {
+            .match-vs-display { flex-direction: column; gap: 8px; }
+            .club-name-link { font-size: 1.4rem !important; text-align: center; width: 100%; display: block; }
+            .vs-badge { margin: 2px auto; }
+        }
+    </style>
 </head>
 <body>
 
     <header class="match-center-header">
-        <div class="back-link-wrapper">
-            <a href="index.html" class="back-link">⬅ Main Portal Table</a>
-        </div>
+        <div class="back-link-wrapper"><a href="index.html" class="back-link">⬅ Main Portal Table</a></div>
         <div class="match-meta-info">KMSL Division 2 • Match Center Hub</div>
         <div class="match-vs-display">
             <a class="club-name-link" id="homeLink" href="team-hub.html?team=all">Home Team</a>
@@ -31,22 +54,49 @@
     </nav>
 
     <main class="content-container">
-        
         <div id="overview" class="report-tab-pane active">
             <h2>Match Analysis & Hype Summary</h2>
             <p id="overviewText" style="margin-top:15px; color:var(--text-muted); line-height:1.6;">Match insights pending...</p>
         </div>
 
         <div id="lineup" class="report-tab-pane">
-            <h2>Official Team Lineups</h2>
-            <div class="grid-2col" style="margin-top:20px;">
+            <div id="formationPitchWrapper" style="display: none; margin-bottom: 30px;">
+                <div class="soccer-pitch">
+                    <div class="center-circle-line"></div>
+                    
+                    <div class="pitch-row forwards-row">
+                        <div class="pitch-player-node"><div class="jersey-icon-circle fallback-avatar">👤</div><span>Carter Leahy</span></div>
+                        <div class="pitch-player-node"><div class="jersey-icon-circle fallback-avatar">👤</div><span>Lucas Johnson</span></div>
+                    </div>
+                    
+                    <div class="pitch-row midfields-row">
+                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4346.jpg" alt="Devonie"></div><span>Devonie Allen</span></div>
+                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4081.jpg" alt="Evan"></div><span>Evan Aasen</span></div>
+                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4202.jpg" alt="Adam"></div><span>Adam Fenske</span></div>
+                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4064.jpg" alt="Minh"></div><span>Minh Vo</span></div>
+                    </div>
+                    
+                    <div class="pitch-row defenders-row">
+                        <div class="pitch-player-node"><div class="jersey-icon-circle highlight"><img src="https://kmsl.ca/upload/id_photos/4307.jpg" alt="Kuda"></div><span>Kuda Machisa</span></div>
+                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4087.jpg" alt="Tapiwa"></div><span>Tapiwa Mutembwa</span></div>
+                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4155.jpg" alt="Ethan"></div><span>Ethan Nickoli</span></div>
+                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4082.jpg" alt="Michael"></div><span>Michael Conlin</span></div>
+                    </div>
+                    
+                    <div class="pitch-row gk-row">
+                        <div class="pitch-player-node"><div class="jersey-icon-circle gk"><img src="https://kmsl.ca/upload/id_photos/4077.jpg" alt="Sean"></div><span>Sean Harper</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2col" id="fallbackRosterLists">
                 <div>
-                    <h3 id="lineupHomeTitle" style="color:var(--accent); margin-bottom:10px;">Home</h3>
-                    <div id="homeLineupList" style="color:var(--text-muted); line-height:1.8;">Roster data locked until match check-in.</div>
+                    <h3 id="lineupHomeTitle" style="color:var(--accent); margin-bottom:10px;">Home Roster</h3>
+                    <div id="homeLineupList" style="color:var(--text-muted); line-height:1.8;">Roster data locked.</div>
                 </div>
                 <div>
-                    <h3 id="lineupAwayTitle" style="color:var(--accent); margin-bottom:10px;">Away</h3>
-                    <div id="awayLineupList" style="color:var(--text-muted); line-height:1.8;">Roster data locked until match check-in.</div>
+                    <h3 id="lineupAwayTitle" style="color:var(--accent); margin-bottom:10px;">Away Roster</h3>
+                    <div id="awayLineupList" style="color:var(--text-muted); line-height:1.8;">Roster data locked.</div>
                 </div>
             </div>
         </div>
@@ -74,7 +124,6 @@
                 <div class="metric-line"><span>Attacking Pressure Avg</span><span>High Intensity vs Mid-Block Counter</span></div>
             </div>
         </div>
-
     </main>
 
     <script>
@@ -85,6 +134,7 @@
         const awayName = document.getElementById('awayLink');
         const metaField = document.getElementById('matchTimeLocation');
         const overviewText = document.getElementById('overviewText');
+        const pitchWrapper = document.getElementById('formationPitchWrapper');
 
         if (matchKey === 'concept-iclean') {
             homeName.innerText = "ICLEAN4U Roasters";
@@ -93,6 +143,7 @@
             awayName.href = "team-hub.html?team=concept";
             metaField.innerText = "6:30 PM • Tuesday, June 16, 2026 @ Beasley 1";
             overviewText.innerText = "A massive battle under the lights. The top tier attacking matrix of ICLEAN4U takes on a battle-ready Concept Physio Vernon squad striving to capture crucial tactical performance points to break into the table center logs rankings.";
+            pitchWrapper.style.display = 'block';
             
             document.getElementById('lineupHomeTitle').innerText = "ICLEAN4U Roasters";
             document.getElementById('lineupAwayTitle').innerText = "Concept Physio Vernon";
