@@ -6,166 +6,156 @@
     <title>KMSL Club Hub | Active Roster Profile</title>
     <link rel="stylesheet" href="styles.css?v=2.2">
     <style>
-        .club-hub-header { background: #161a22; border-bottom: 2px solid var(--accent); padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; }
-        .back-link-wrapper { width: 100%; text-align: left; }
-        .back-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-block; }
+        .club-hub-header { background: #161a22; border-bottom: 2px solid var(--accent); padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; position: relative; z-index: 10; }
+        .back-link-wrapper { width: 100%; text-align: left; position: relative; z-index: 20; }
+        .back-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-block; cursor: pointer; }
         .back-link:hover { text-decoration: underline; }
         .club-title-card h1 { font-size: clamp(1.4rem, 4vw, 2.5rem); font-weight: 800; color: var(--text-light); margin-bottom: 5px; }
         .club-meta-info { color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .club-tabs-navbar { display: flex; justify-content: flex-start; background: #000000; border-bottom: 1px solid #21262d; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; padding: 0; }
-        .club-tabs-navbar::-webkit-scrollbar { display: none; }
-        .club-tab-btn { background: transparent; border: none; color: var(--text-muted); padding: 15px 20px; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; display: inline-block; transition: 0.2s; font-size: 0.9rem; flex-shrink: 0; }
-        .club-tab-btn:first-child { padding-left: 20px !important; }
-        .club-tab-btn.active, .club-tab-btn:hover { color: var(--accent); border-bottom-color: var(--accent); }
-        .content-container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
-        .club-tab-pane { background: var(--card-dark); border: 1px solid #21262d; border-radius: 12px; padding: 25px; display: none; animation: fadeIn 0.3s ease; }
+        
+        .club-tabs-navbar { display: flex; justify-content: center; gap: 10px; margin: 20px 0; border-bottom: 1px solid #21262d; width: 100%; padding-bottom: 10px; position: relative; z-index: 30; }
+        .club-tab-btn { background: none; border: none; color: var(--text-muted); font-weight: 600; padding: 8px 16px; cursor: pointer; border-radius: 6px; font-size: 0.95rem; transition: all 0.2s; position: relative; z-index: 40; }
+        .club-tab-btn:hover { color: var(--text-light); background-color: rgba(255,255,255,0.05); }
+        .club-tab-btn.active { color: var(--bg-dark); background-color: var(--accent); font-weight: 700; }
+        
+        .club-tab-pane { display: none; width: 100%; }
         .club-tab-pane.active { display: block; }
-        .pane-column-h4 { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .roster-photo-matrix { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; margin-top: 15px; }
-        .player-photo-card { background: var(--bg-dark); border: 1px solid #21262d; border-radius: 8px; padding: 15px 10px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-        .player-thumb-frame { width: 65px; height: 65px; border-radius: 50%; overflow: hidden; margin-bottom: 10px; border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; }
-        .player-name-lbl { color: var(--text-light); font-weight: 600; font-size: 0.85rem; min-height: 34px; display: flex; align-items: center; justify-content: center; }
-        .photo-pending-upsell { font-size: 0.65rem; color: var(--text-muted); margin-top: 5px; background: rgba(255,255,255,0.04); padding: 4px; border-radius: 4px; width: 100%; text-align: center; }
-        .grid-2col { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .metric-line { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #21262d; font-size: 0.95rem; }
+        
+        .roster-flex-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; margin-top: 15px; width: 100%; }
+        .player-photo-card { background: #161a22; border: 1px solid #21262d; border-radius: 10px; padding: 15px 10px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); overflow: hidden; }
+        .player-thumb-frame { width: 70px !important; height: 70px !important; border-radius: 50% !important; background: #0d0f12; overflow: hidden !important; border: 2px solid #30363d; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+        .player-thumb-frame img { width: 100% !important; height: 100% !important; object-fit: cover !important; border-radius: 50% !important; }
+        
+        .player-name-lbl { font-size: 0.85rem; font-weight: 700; color: var(--text-light); line-height: 1.3; min-height: 34px; display: flex; align-items: center; justify-content: center; }
+        .photo-pending-upsell { font-size: 0.62rem; color: var(--accent); text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; background: rgba(57,255,20,0.1); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(57,255,20,0.2); width: 100%; }
+        .club-info-stack { background: #161a22; border: 1px solid #21262d; border-radius: 12px; padding: 20px; margin-top: 15px; display: flex; flex-direction: column; gap: 15px; }
+        .info-stack-item h3 { font-size: 1rem; color: var(--accent); text-transform: uppercase; margin-bottom: 5px; font-weight: 700; letter-spacing: 0.5px; }
+        .info-stack-item p { color: var(--text-light); font-size: 0.95rem; line-height: 1.5; }
     </style>
 </head>
 <body>
 
     <header class="club-hub-header">
-        <div class="back-link-wrapper"><a href="index.html" class="back-link">⬅ Main Portal Table</a></div>
+        <div class="back-link-wrapper">
+            <a href="index.html" class="back-link">← Back to Standings Log</a>
+        </div>
         <div class="club-title-card">
-            <h1 id="detailsTeamName">Kelowna Men's Soccer League Club Hub</h1>
-            <div class="club-meta-info" id="detailsTeamMeta">Division 2 Central Tier</div>
+            <h1 id="clubNameHeader">🛡️ Loading Club Profile...</h1>
+            <div class="club-meta-info">KMSL Division 2 Tier Allocation</div>
+        </div>
+        
+        <div class="club-tabs-navbar">
+            <button class="club-tab-btn active" onclick="switchClubTab(event, 'rosterTab')">Active Roster</button>
+            <button class="club-tab-btn" onclick="switchClubTab(event, 'infoTab')">Club Profile</button>
+            <button class="club-tab-btn" onclick="switchClubTab(event, 'tacticsTab')">Formations</button>
         </div>
     </header>
 
-    <nav class="club-tabs-navbar">
-        <button class="club-tab-btn active" onclick="switchClubTab(event, 'roster')">Roster Profile</button>
-        <button class="club-tab-btn" onclick="switchClubTab(event, 'kits')">Identity & Team Formations</button>
-        <button class="club-tab-btn" onclick="switchClubTab(event, 'stats')">Season Metrics</button>
-        <button class="club-tab-btn" onclick="switchClubTab(event, 'history')">Past Match Day</button>
-    </nav>
-
-    <main class="content-container">
-        <div id="roster" class="club-tab-pane active">
-            <h4 class="pane-column-h4">📋 Management Staff</h4>
-            <div id="managerNamesList" style="color:var(--text-light); line-height:1.8;">Staffing data pending...</div>
-            
-            <h4 class="pane-column-h4" style="margin-top:20px;">⚽ Active Player Matrix</h4>
-            <div class="roster-photo-matrix" id="squadMatrixFrame"></div>
+    <main style="max-width:800px; margin: 0 auto; padding: 20px 15px;">
+        
+        <div class="club-tab-pane active" id="rosterTab">
+            <div class="roster-flex-layout" id="rosterContainer"></div>
         </div>
 
-        <div id="kits" class="club-tab-pane">
-            <div class="grid-2col">
-                <div>
-                    <h2>👕 Kit Configurations</h2>
-                    <div class="jersey-swatch-row" id="jerseyContainer" style="margin-top: 15px;">Kit data pending...</div>
+        <div class="club-tab-pane" id="infoTab">
+            <div class="club-info-stack">
+                <div class="info-stack-item">
+                    <h3>Management & Technical Staff</h3>
+                    <p id="clubManagerField">Data loading...</p>
                 </div>
-                <div>
-                    <h2>📋 Preferred Match System</h2>
-                    <p style="color: var(--text-muted); margin-top: 10px;" id="formationDescription">Standard tactical layout details pending sync.</p>
-                </div>
-            </div>
-
-            <div class="pitch-container-wrapper" id="pitchWrapper" style="display: none; margin-top: 30px;">
-                <div class="soccer-pitch">
-                    <div class="center-circle-line"></div>
-                    
-                    <div class="pitch-row forwards-row">
-                        <div class="pitch-player-node"><div class="jersey-icon-circle fallback-avatar">👤</div><span>Carter Leahy</span></div>
-                        <div class="pitch-player-node"><div class="jersey-icon-circle fallback-avatar">👤</div><span>Lucas Johnson</span></div>
-                    </div>
-                    
-                    <div class="pitch-row midfields-row">
-                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4346.jpg" alt="Devonie"></div><span>Devonie Allen</span></div>
-                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4081.jpg" alt="Evan"></div><span>Evan Aasen</span></div>
-                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4202.jpg" alt="Adam"></div><span>Adam Fenske</span></div>
-                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4064.jpg" alt="Minh"></div><span>Minh Vo</span></div>
-                    </div>
-                    
-                    <div class="pitch-row defenders-row">
-                        <div class="pitch-player-node"><div class="jersey-icon-circle highlight"><img src="https://kmsl.ca/upload/id_photos/4307.jpg" alt="Kuda"></div><span>Kuda Machisa</span></div>
-                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4087.jpg" alt="Tapiwa"></div><span>Tapiwa Mutembwa</span></div>
-                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4155.jpg" alt="Ethan"></div><span>Ethan Nickoli</span></div>
-                        <div class="pitch-player-node"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4082.jpg" alt="Michael"></div><span>Michael Conlin</span></div>
-                    </div>
-                    
-                    <div class="pitch-row gk-row">
-                        <div class="pitch-player-node"><div class="jersey-icon-circle gk"><img src="https://kmsl.ca/upload/id_photos/4077.jpg" alt="Sean"></div><span>Sean Harper</span></div>
-                    </div>
+                <div class="info-stack-item">
+                    <h3>Official Kit Design</h3>
+                    <div id="clubKitContainer" style="margin-top:5px;"></div>
                 </div>
             </div>
         </div>
 
-        <div id="stats" class="club-tab-pane">
-            <h2>Season Key Metric Leaders</h2>
-            <div class="metric-line"><span>👑 Top Goalscorer</span><span id="goalsCount" style="color:var(--accent); font-weight:800">--</span></div>
-            <div class="metric-line"><span>🎯 Leading Playmaker</span><span id="assistsCount" style="color:var(--accent); font-weight:800">--</span></div>
+        <div class="club-tab-pane" id="tacticsTab">
+            <div class="club-info-stack">
+                <div class="info-stack-item">
+                    <h3>Standard Tactical Formation</h3>
+                    <p id="clubFormationText" style="margin-bottom:15px;">Data loading...</p>
+                </div>
+                
+                <div id="pitchDisplayArea" class="tactical-field-canvas" style="display:none; transform: scale(0.95); margin: 0 auto;">
+                    <div class="field-midline-stripe"></div>
+                    <div class="field-center-circle-ring"></div>
+                    <div class="field-penalty-box-top"></div>
+                    <div class="field-penalty-box-bottom"></div>
+                    
+                    <!-- Goalkeeper (Tyler) -->
+                    <div class="pitch-player-node" style="bottom: 6%; left: 50%;"><div class="jersey-icon-circle gk"><img src="https://kmsl.ca/upload/id_photos/4068.jpg"></div><span>Tyler (GK)</span></div>
+                    
+                    <!-- Back Line Defense -->
+                    <div class="pitch-player-node" style="bottom: 22%; left: 15%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4064.jpg"></div><span>Minh (LB)</span></div>
+                    <div class="pitch-player-node" style="bottom: 16%; left: 38%;"><div class="jersey-icon-circle fallback-avatar">DF</div><span>Tata (CB)</span></div>
+                    <div class="pitch-player-node" style="bottom: 16%; left: 62%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4111.jpg"></div><span>Quinn (CB)</span></div>
+                    <div class="pitch-player-node" style="bottom: 22%; left: 85%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4063.jpg"></div><span>Bekim (RB)</span></div>
+                    
+                    <!-- Midfield Base Grid -->
+                    <div class="pitch-player-node" style="bottom: 50%; left: 15%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4082.jpg"></div><span>Mike (LM)</span></div>
+                    <div class="pitch-player-node" style="bottom: 44%; left: 38%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4346.jpg"></div><span>Devonie (CM)</span></div>
+                    <div class="pitch-player-node" style="bottom: 44%; left: 62%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/3606.jpg"></div><span>Nico (AM)</span></div>
+                    <div class="pitch-player-node" style="bottom: 50%; left: 85%;"><div class="jersey-icon-circle highlight"><img src="https://kmsl.ca/upload/id_photos/4307.jpg"></div><span style="color:var(--accent); font-weight:800;">Kuda (RM)</span></div>
+                    
+                    <!-- Attacking Striker Frontline -->
+                    <div class="pitch-player-node" style="bottom: 74%; left: 35%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4164.jpg"></div><span>Carter (ST)</span></div>
+                    <div class="pitch-player-node" style="bottom: 74%; left: 65%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4202.jpg"></div><span>Adam (ST)</span></div>
+                </div>
+            </div>
         </div>
 
-        <div id="history" class="club-tab-pane">
-            <h2>Match History Data</h2>
-            <p style="color: var(--text-muted);">KMSL performance tracking indicator logs sync pending.</p>
-        </div>
     </main>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const teamKey = urlParams.get('team') || 'all';
+        const teamKey = urlParams.get('team');
 
-        const nameField = document.getElementById('detailsTeamName');
-        const metaField = document.getElementById('detailsTeamMeta');
-        const managerContainer = document.getElementById('managerNamesList');
-        const rosterContainer = document.getElementById('squadMatrixFrame');
-        const kitContainer = document.getElementById('jerseyContainer');
-        const formationText = document.getElementById('formationDescription');
-        const pitchDisplay = document.getElementById('pitchWrapper');
+        const nameField = document.getElementById('clubNameHeader');
+        const rosterContainer = document.getElementById('rosterContainer');
+        const managerContainer = document.getElementById('clubManagerField');
+        const kitContainer = document.getElementById('clubKitContainer');
+        const formationText = document.getElementById('clubFormationText');
+        const pitchDisplay = document.getElementById('pitchDisplayArea');
 
         if (teamKey === 'concept') {
-            nameField.innerText = "⚡ Concept Physio Vernon";
-            metaField.innerText = "Division 2 Central • Current Rank: #12";
-            managerContainer.innerHTML = "Robert Spraggs (Coach/Manager)<br>Brad Conlin (Assistant Manager)";
-            kitContainer.innerHTML = `<div class="jersey-chip"><span class="swatch yellow"></span> Home (Yellow)</div><div class="jersey-chip"><span class="swatch black"></span> Away (Black)</div>`;
-            formationText.innerHTML = "<strong>System: 4-4-2 Diamond Flat.</strong> Concept Physio relies heavily on structured wide channels and deep defensive blocks to intercept attacks and launch rapid counter-offensive movements to unlock direct striking columns.";
+            nameField.innerHTML = "⚡ Concept Physio Vernon";
+            managerContainer.innerHTML = "<strong>Head Coach & Manager:</strong> Robert Spraggs<br><strong>Assistant Manager:</strong> Brad Conlin";
+            kitContainer.innerHTML = `<div class="jersey-chip"><span class="swatch yellow"></span> Home (Yellow)</div> <div class="jersey-chip"><span class="swatch black"></span> Away (Black)</div>`;
+            formationText.innerText = "Custom 4-4-2 Strategy featuring wide overlap transitions and a heavy central pressing defense.";
             pitchDisplay.style.display = 'block';
-            
-            document.getElementById('goalsCount').innerText = "0 Goals (Roster Indexing)";
-            document.getElementById('assistsCount').innerText = "5 Assists (Machisa)";
 
-            const conceptRoster = [
-                { name: "Robert Spraggs", img: "" },
-                { name: "Kudakwashe Machisa", img: "https://kmsl.ca/upload/id_photos/4307.jpg" },
-                { name: "Evan Aasen", img: "https://kmsl.ca/upload/id_photos/4081.jpg" },
-                { name: "Devonie Allen", img: "https://kmsl.ca/upload/id_photos/4346.jpg" },
-                { name: "Rajied Atkinson", img: "https://kmsl.ca/upload/id_photos/4477.jpg" },
-                { name: "Brennan Bohmer", img: "https://kmsl.ca/upload/id_photos/4071.jpg" },
-                { name: "Ryan Commance", img: "" },
-                { name: "Brad Conlin", img: "https://kmsl.ca/upload/id_photos/4277.jpg" },
-                { name: "Michael Conlin", img: "https://kmsl.ca/upload/id_photos/4082.jpg" },
-                { name: "Adam Fenske", img: "https://kmsl.ca/upload/id_photos/4202.jpg" },
-                { name: "Sean Harper", img: "https://kmsl.ca/upload/id_photos/4077.jpg" },
-                { name: "Felipe Hernandez", img: "https://kmsl.ca/upload/id_photos/4065.jpg" },
-                { name: "Tyler Hrdlitschka", img: "https://kmsl.ca/upload/id_photos/4068.jpg" },
-                { name: "Lucas Johnson", img: "https://kmsl.ca/upload/id_photos/4268.jpg" },
-                { name: "Alex Kazimer", img: "https://kmsl.ca/upload/id_photos/4079.jpg" },
-                { name: "Carter Leahy", img: "https://kmsl.ca/upload/id_photos/4164.jpg" },
-                { name: "Émeric Lépine", img: "https://kmsl.ca/upload/id_photos/4086.jpg" },
-                { name: "Bekim Maliqi", img: "https://kmsl.ca/upload/id_photos/4063.jpg" },
-                { name: "Jashan Mavi", img: "https://kmsl.ca/upload/id_photos/4085.jpg" },
-                { name: "Tapiwa Mutembwa", img: "https://kmsl.ca/upload/id_photos/4087.jpg" },
-                { name: "Ethan Nickoli", img: "https://kmsl.ca/upload/id_photos/4155.jpg" },
-                { name: "Quinn Soon", img: "https://kmsl.ca/upload/id_photos/4111.jpg" },
-                { name: "Aidan Spraggs", img: "https://kmsl.ca/upload/id_photos/4042.jpg" },
-                { name: "Niko Venturas", img: "https://kmsl.ca/upload/id_photos/3606.jpg" },
-                { name: "Minh Vo", img: "https://kmsl.ca/upload/id_photos/4064.jpg" }
+            const conceptSquad = [
+                { name: "Kuda Machisa", url: "https://kmsl.ca/upload/id_photos/4307.jpg", highlight: true },
+                { name: "Evan Aasen", url: "https://kmsl.ca/upload/id_photos/4081.jpg" },
+                { name: "Devonie Allen", url: "https://kmsl.ca/upload/id_photos/4346.jpg" },
+                { name: "Rajied Atkinson", url: "https://kmsl.ca/upload/id_photos/4477.jpg" },
+                { name: "Brennan Bohmer", url: "https://kmsl.ca/upload/id_photos/4071.jpg" },
+                { name: "Ryan Commance", url: "https://kmsl.ca/webapps/images/camera.gif" },
+                { name: "Brad Conlin", url: "https://kmsl.ca/upload/id_photos/4277.jpg" },
+                { name: "Michael Conlin", url: "https://kmsl.ca/upload/id_photos/4082.jpg" },
+                { name: "Adam Fenske", url: "https://kmsl.ca/upload/id_photos/4202.jpg" },
+                { name: "Sean Harper", url: "https://kmsl.ca/upload/id_photos/4077.jpg" },
+                { name: "Felipe Hernandez", url: "https://kmsl.ca/upload/id_photos/4065.jpg" },
+                { name: "Tyler Hrdlitschka", url: "https://kmsl.ca/upload/id_photos/4068.jpg" },
+                { name: "Lucas Johnson", url: "https://kmsl.ca/upload/id_photos/4268.jpg" },
+                { name: "Alex Kazimer", url: "https://kmsl.ca/upload/id_photos/4079.jpg" },
+                { name: "Carter Leahy", url: "https://kmsl.ca/upload/id_photos/4164.jpg" },
+                { name: "Émeric Lépine", url: "https://kmsl.ca/upload/id_photos/4086.jpg" },
+                { name: "Bekim Maliqi", url: "https://kmsl.ca/upload/id_photos/4063.jpg" },
+                { name: "Jashan Mavi", url: "https://kmsl.ca/upload/id_photos/4085.jpg" },
+                { name: "Tapiwa Mutembwa", url: "https://kmsl.ca/upload/id_photos/4087.jpg" },
+                { name: "Ethan Nickoli", url: "https://kmsl.ca/upload/id_photos/4155.jpg" },
+                { name: "Quinn Soon", url: "https://kmsl.ca/upload/id_photos/4111.jpg" },
+                { name: "Aidan Spraggs", url: "https://kmsl.ca/upload/id_photos/4042.jpg" },
+                { name: "Niko Venturas", url: "https://kmsl.ca/upload/id_photos/3606.jpg" },
+                { name: "Minh Vo", url: "https://kmsl.ca/upload/id_photos/4064.jpg" }
             ];
 
-            rosterContainer.innerHTML = conceptRoster.map(player => {
-                const imgSource = player.img ? player.img : "";
-                const avatarHtml = imgSource ? `<img src="${imgSource}" style="width:100%;height:100%;object-fit:cover;">` : `<div class="avatar-placeholder">👤</div>`;
-                const highlitClass = player.name.includes("Kudakwashe") ? "style='color:var(--accent); font-weight:800;'" : "";
-                return `<div class="player-photo-card"><div class="player-thumb-frame">${avatarHtml}</div><div class="player-name-lbl" ${highlitClass}>${player.name}</div><div class="photo-pending-upsell">KMSL Photo Stream Active</div></div>`;
+            rosterContainer.innerHTML = conceptSquad.map(player => {
+                const avatarHtml = `<img src="${player.url}" alt="${player.name}">`;
+                const highlitClass = player.highlight ? "style='color:var(--accent); font-weight:800;'" : "";
+                return `<div class="player-photo-card"><div class="player-thumb-frame">${avatarHtml}</div><div class="player-name-lbl" ${highlitClass}>${player.name}</div><div class="photo-pending-upsell">KMSL Photo Active</div></div>`;
             }).join('');
         } else {
             nameField.innerText = "🛡️ " + teamKey.toUpperCase() + " Club Hub Profile";
