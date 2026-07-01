@@ -83,22 +83,18 @@
                     <div class="field-penalty-box-top"></div>
                     <div class="field-penalty-box-bottom"></div>
                     
-                    <!-- Goalkeeper (Tyler) -->
                     <div class="pitch-player-node" style="bottom: 6%; left: 50%;"><div class="jersey-icon-circle gk"><img src="https://kmsl.ca/upload/id_photos/4068.jpg"></div><span>Tyler (GK)</span></div>
                     
-                    <!-- Back Line Defense -->
                     <div class="pitch-player-node" style="bottom: 22%; left: 15%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4064.jpg"></div><span>Minh (LB)</span></div>
-                    <div class="pitch-player-node" style="bottom: 16%; left: 38%;"><div class="jersey-icon-circle fallback-avatar">DF</div><span>Tata (CB)</span></div>
-                    <div class="pitch-player-node" style="bottom: 16%; left: 62%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4111.jpg"></div><span>Quinn (CB)</span></div>
-                    <div class="pitch-player-node" style="bottom: 22%; left: 85%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4063.jpg"></div><span>Bekim (RB)</span></div>
+                    <div class="pitch-player-node" style="bottom: 16%; left: 38%;"><div class="jersey-icon-circle"><img src="tata.jpeg"></div><span>Tata (CB)</span></div>
+                    <div class="pitch-player-node" style="bottom: 16%; left: 62%;"><div class="jersey-icon-circle"><img src="quinn.jpeg"></div><span>Quinn (CB)</span></div>
+                    <div class="pitch-player-node" style="bottom: 22%; left: 85%;"><div class="jersey-icon-circle"><img src="bekim.jpeg"></div><span>Bekim (RB)</span></div>
                     
-                    <!-- Midfield Base Grid -->
                     <div class="pitch-player-node" style="bottom: 50%; left: 15%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4082.jpg"></div><span>Mike (LM)</span></div>
-                    <div class="pitch-player-node" style="bottom: 44%; left: 38%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4346.jpg"></div><span>Devonie (CM)</span></div>
-                    <div class="pitch-player-node" style="bottom: 44%; left: 62%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/3606.jpg"></div><span>Nico (AM)</span></div>
+                    <div class="pitch-player-node" style="bottom: 44%; left: 38%;"><div class="jersey-icon-circle"><img src="devani.jpeg"></div><span>Devonie (CM)</span></div>
+                    <div class="pitch-player-node" style="bottom: 44%; left: 62%;"><div class="jersey-icon-circle"><img src="nico.jpeg"></div><span>Nico (AM)</span></div>
                     <div class="pitch-player-node" style="bottom: 50%; left: 85%;"><div class="jersey-icon-circle highlight"><img src="https://kmsl.ca/upload/id_photos/4307.jpg"></div><span style="color:var(--accent); font-weight:800;">Kuda (RM)</span></div>
                     
-                    <!-- Attacking Striker Frontline -->
                     <div class="pitch-player-node" style="bottom: 74%; left: 35%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4164.jpg"></div><span>Carter (ST)</span></div>
                     <div class="pitch-player-node" style="bottom: 74%; left: 65%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4202.jpg"></div><span>Adam (ST)</span></div>
                 </div>
@@ -125,30 +121,31 @@
             formationText.innerText = "Custom 4-4-2 Strategy featuring wide overlap transitions and a heavy central pressing defense.";
             pitchDisplay.style.display = 'block';
 
+            // UPDATED DATASET MAPPING YOUR 7 NEW LOCAL IMAGES
             const conceptSquad = [
                 { name: "Kuda Machisa", url: "https://kmsl.ca/upload/id_photos/4307.jpg", highlight: true },
-                { name: "Evan Aasen", url: "https://kmsl.ca/upload/id_photos/4081.jpg" },
-                { name: "Devonie Allen", url: "https://kmsl.ca/upload/id_photos/4346.jpg" },
+                { name: "Evan Aasen", url: "evan.jpeg" },
+                { name: "Devonie Allen", url: "devani.jpeg" },
                 { name: "Rajied Atkinson", url: "https://kmsl.ca/upload/id_photos/4477.jpg" },
                 { name: "Brennan Bohmer", url: "https://kmsl.ca/upload/id_photos/4071.jpg" },
-                { name: "Ryan Commance", url: "https://kmsl.ca/webapps/images/camera.gif" },
+                { name: "Ryan Commance", url: "ryan.jpeg" },
                 { name: "Brad Conlin", url: "https://kmsl.ca/upload/id_photos/4277.jpg" },
                 { name: "Michael Conlin", url: "https://kmsl.ca/upload/id_photos/4082.jpg" },
                 { name: "Adam Fenske", url: "https://kmsl.ca/upload/id_photos/4202.jpg" },
                 { name: "Sean Harper", url: "https://kmsl.ca/upload/id_photos/4077.jpg" },
                 { name: "Felipe Hernandez", url: "https://kmsl.ca/upload/id_photos/4065.jpg" },
                 { name: "Tyler Hrdlitschka", url: "https://kmsl.ca/upload/id_photos/4068.jpg" },
-                { name: "Lucas Johnson", url: "https://kmsl.ca/upload/id_photos/4268.jpg" },
+                { name: "Lucas Johnson", url: "lucas.jpeg" },
                 { name: "Alex Kazimer", url: "https://kmsl.ca/upload/id_photos/4079.jpg" },
                 { name: "Carter Leahy", url: "https://kmsl.ca/upload/id_photos/4164.jpg" },
                 { name: "Émeric Lépine", url: "https://kmsl.ca/upload/id_photos/4086.jpg" },
-                { name: "Bekim Maliqi", url: "https://kmsl.ca/upload/id_photos/4063.jpg" },
+                { name: "Bekim Maliqi", url: "bekim.jpeg" },
                 { name: "Jashan Mavi", url: "https://kmsl.ca/upload/id_photos/4085.jpg" },
-                { name: "Tapiwa Mutembwa", url: "https://kmsl.ca/upload/id_photos/4087.jpg" },
-                { name: "Ethan Nickoli", url: "https://kmsl.ca/upload/id_photos/4155.jpg" },
-                { name: "Quinn Soon", url: "https://kmsl.ca/upload/id_photos/4111.jpg" },
-                { name: "Aidan Spraggs", url: "https://kmsl.ca/upload/id_photos/4042.jpg" },
-                { name: "Niko Venturas", url: "https://kmsl.ca/upload/id_photos/3606.jpg" },
+                { name: "Tapiwa Mutembwa", url: "tata.jpeg" },
+                { name: "Ethan Nickoli", url: "ethan.jpeg" },
+                { name: "Quinn Soon", url: "quinn.jpeg" },
+                { name: "Aidan Spraggs", url: "aiden.jpeg" },
+                { name: "Niko Venturas", url: "nico.jpeg" },
                 { name: "Minh Vo", url: "https://kmsl.ca/upload/id_photos/4064.jpg" }
             ];
 
