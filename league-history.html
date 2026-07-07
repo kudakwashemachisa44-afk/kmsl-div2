@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMSL | Complete League Match Logs</title>
+    <link rel="stylesheet" href="styles.css?v=2.4">
+    <style>
+        .history-page-container { max-width: 900px; margin: 40px auto; padding: 0 15px; }
+        .search-bar-box { width: 100%; background: #161a22; border: 1px solid #21262d; border-radius: 8px; padding: 12px 16px; color: #e6edf3; font-size: 1rem; margin-bottom: 20px; outline: none; }
+        .log-table { width: 100%; border-collapse: collapse; background: #161a22; border: 1px solid #21262d; border-radius: 8px; overflow: hidden; }
+        .log-table th, .log-table td { padding: 12px 16px; border-bottom: 1px solid #21262d; text-align: left; font-size: 0.9rem; }
+        .log-table th { background: #1f242c; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .log-score { font-weight: 800; color: var(--accent); text-align: center !important; }
+    </style>
+</head>
+<body>
+
+    <div class="history-page-container">
+        <div style="margin-bottom: 20px;"><a href="index.html" style="color: var(--accent); text-decoration: none; font-weight: 600;">← Back to Main Dashboard</a></div>
+        <h2 style="margin-bottom: 10px;">📜 Seasonal Division Match Archives</h2>
+        <p style="color: var(--text-muted); margin-bottom: 25px;">Comprehensive performance matrix logs captured during standard league match windows.</p>
+
+        <input type="text" id="logSearch" class="search-bar-box" placeholder="Filter logs by club names..." onkeyup="searchLogs()">
+
+        <table class="log-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Home Side</th>
+                    <th style="text-align: center;">Score</th>
+                    <th>Visiting Side</th>
+                    <th>Field Venue</th>
+                </tr>
+            </thead>
+            <tbody id="logTableBody">
+                <tr><td>4/14</td><td>Okanagan Unathletics</td><td class="log-score">1 - 7</td><td>Okanagan Wanderers</td><td>City Park</td></tr>
+                <tr><td>4/14</td><td>Orchard Valley FC</td><td class="log-score">3 - 5</td><td>Ocorp Apna United</td><td>Mission 13</td></tr>
+                <tr><td>4/14</td><td>Red Devils FC</td><td class="log-score">2 - 0</td><td>Concept Physio Vernon</td><td>Glemore 1</td></tr>
+                <tr><td>4/14</td><td>Sterling United A</td><td class="log-score">2 - 0</td><td>Solos Energy Mules</td><td>Beasley 2</td></tr>
+                <tr><td>4/21</td><td>Solos Energy Mules</td><td class="log-score">1 - 2</td><td>Okanagan Wanderers</td><td>Beasley 2</td></tr>
+                <tr><td>4/21</td><td>Concept Physio Vernon</td><td class="log-score">2 - 0</td><td>Kelowna Union FC</td><td>Beasley 2</td></tr>
+                <tr><td>4/28</td><td>Strikers All-Stars</td><td class="log-score">4 - 0</td><td>Concept Physio Vernon</td><td>Beasley 1</td></tr>
+                <tr><td>5/12</td><td>Concept Physio Vernon</td><td class="log-score">3 - 1</td><td>Westside Apex</td><td>Beasley 1</td></tr>
+                <tr><td>5/26</td><td>Solos Energy Mules</td><td class="log-score">2 - 1</td><td>Concept Physio Vernon</td><td>Beasley 2</td></tr>
+                <tr><td>6/16</td><td>ICLEAN4U Roasters</td><td class="log-score">6 - 1</td><td>Concept Physio Vernon</td><td>Beasley 1</td></tr>
+                <tr><td>6/30</td><td>The GOAT Barbers OUFC</td><td class="log-score">7 - 4</td><td>Concept Physio Vernon</td><td>Beasley Park 1</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function searchLogs() {
+            const input = document.getElementById('logSearch').value.toLowerCase();
+            const rows = document.getElementById('logTableBody').getElementsByTagName('tr');
+            for (let i = 0; i < rows.length; i++) {
+                const text = rows[i].textContent.toLowerCase();
+                rows[i].style.display = text.includes(input) ? "" : "none";
+            }
+        }
+    </script>
+</body>
+</html>

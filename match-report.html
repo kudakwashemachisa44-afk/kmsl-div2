@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KMSL Match Center | Live Report Central</title>
-    <link rel="stylesheet" href="styles.css?v=2.2">
+    <link rel="stylesheet" href="styles.css?v=2.9">
     <style>
         .back-link-wrapper { position: absolute; top: 15px; left: 5%; z-index: 50; }
         .back-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; cursor: pointer; display: inline-block; }
@@ -23,52 +23,42 @@
         .report-tab-pane { display: none; width: 100%; margin-top: 20px; }
         .report-tab-pane.active { display: block; }
 
-        /* FORMATION STRIP SUB-BANNERS */
         .formation-team-header-bar { display: flex; align-items: center; justify-content: space-between; background: #1f242c; border: 1px solid #21262d; border-radius: 6px; padding: 10px 15px; margin-bottom: 15px; width: 100%; max-width: 540px; }
         .team-badge-pill-identity { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 0.95rem; }
         .formation-numeric-tag { background: rgba(255,255,255,0.05); color: var(--text-muted); font-size: 0.78rem; font-weight: 700; padding: 4px 8px; border-radius: 4px; border: 1px solid #30363d; }
 
         .pitch-outer-scroller { width: 100%; overflow-x: auto; padding: 10px 0; display: flex; flex-direction: column; align-items: center; }
 
-        /* OVERLAPPING TEAM BENCH WRAPPER SYSTEM */
-        .world-cup-bench-layout { display: grid; grid-template-columns: 1fr 100px 1fr; width: 100%; max-width: 540px; background: #161a22; border: 1px solid #21262d; border-radius: 12px; margin-top: 25px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+        .world-cup-bench-layout { display: grid; grid-template-columns: 1fr 45px 1fr; width: 100%; max-width: 540px; background: #161a22; border: 1px solid #21262d; border-radius: 12px; margin-top: 25px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
         .bench-center-divider-hub { background: #0d0f12; border-left: 1px solid #21262d; border-right: 1px solid #21262d; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .bench-center-divider-hub h4 { font-size: 0.7rem; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; writing-mode: vertical-lr; transform: rotate(180deg); }
+        .bench-center-divider-hub h4 { font-size: 0.62rem; font-weight: 900; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; writing-mode: vertical-lr; transform: rotate(180deg); padding: 10px 0; }
+        .bench-team-side-wing { padding: 15px 14px; display: flex; flex-direction: column; gap: 8px; }
+        .bench-wing-title-header { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 8px; margin-bottom: 6px; }
         
-        .bench-team-side-wing { padding: 15px 12px; display: flex; flex-direction: column; gap: 8px; }
-        .bench-wing-title-header { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 6px; margin-bottom: 4px; }
-        
-        /* HORIZONTAL BENCH ROW IMPLEMENTATION */
-        .bench-horizontal-player-strip { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.03); border-radius: 6px; padding: 6px 10px; }
-        .bench-horizontal-player-strip:hover { border-color: rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); }
-        .bench-portrait-circle { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 1px solid #30363d; flex-shrink: 0; background: #0d0f12; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; }
+        .bench-horizontal-player-strip { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 6px; padding: 8px 12px; }
+        .bench-portrait-circle { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; border: 2px solid #30363d; flex-shrink: 0; background: #0d0f12; display: flex; align-items: center; justify-content: center; }
         .bench-portrait-circle img { width: 100%; height: 100%; object-fit: cover; }
-        .bench-profile-name-label { font-size: 0.78rem; font-weight: 700; color: #e6edf3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .bench-profile-name-label { font-size: 0.82rem; font-weight: 700; color: #e6edf3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* VECTOR TEAM BRANDING INDICATORS */
         .vector-logo-box { width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
         .logo-concept { background: linear-gradient(135deg, #facc15, #000000); color: var(--accent); font-weight: 900; }
-        .logo-iclean  { background: linear-gradient(135deg, #007aff, #ffffff); color: white; font-weight: 900; }
+        .logo-solos    { background: linear-gradient(135deg, #4b5563, #ffffff); color: #0d0f12; font-weight: 900; }
     </style>
 </head>
 <body>
 
     <header class="hero-section" style="min-height: auto; padding: 40px 20px; border-bottom: 1px solid #21262d;">
         <div class="hero-overlay" style="opacity: 0.85;"></div>
-        
         <div class="back-link-wrapper">
             <a href="index.html" class="back-link">← Back to Standings Log</a>
         </div>
-
         <div class="hero-content" style="max-width: 900px; width: 100%;">
             <div class="match-meta-info" id="matchMetaDetails">Fixture Metadata Loading...</div>
-            
             <div class="match-vs-display">
                 <a href="#" class="club-name-link home-side-lbl" id="homeClubLink">Home Club</a>
                 <div class="vs-circle-badge">VS</div>
                 <a href="#" class="club-name-link away-side-lbl" id="awayClubLink">Away Club</a>
             </div>
-
             <div class="match-report-navbar">
                 <button class="match-tab-btn active" onclick="switchReportTab(event, 'overviewPane')">Overview</button>
                 <button class="match-tab-btn" onclick="switchReportTab(event, 'lineupsPane')">Tactical Layout</button>
@@ -77,131 +67,78 @@
     </header>
 
     <main style="max-width: 900px; margin: 0 auto; padding: 20px 15px;">
-        
         <div class="report-tab-pane active" id="overviewPane">
             <div class="podium-card notice-card" style="margin: 0; padding: 20px;">
                 <h2 style="color: var(--accent); font-size: 1.2rem; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px;">Match Day Briefing</h2>
-                <p id="matchOverviewParagraph" style="line-height: 1.6; color: var(--text-light); font-size: 1rem;">Analytical summary text pending log matrix...</p>
+                <p id="matchOverviewParagraph" style="line-height: 1.6; color: var(--text-light); font-size: 1rem;">Analytical text summary pending loading parameters...</p>
             </div>
         </div>
 
         <div class="report-tab-pane" id="lineupsPane">
             <div class="pitch-outer-scroller">
-                
-                <!-- TOP HEADER: ICLEAN4U ROASTERS -->
                 <div class="formation-team-header-bar" id="homeHeaderBar" style="display: none;">
-                    <div class="team-badge-pill-identity">
-                        <div class="vector-logo-box logo-iclean">🧽</div>
-                        <span>ICLEAN4U Roasters</span>
-                    </div>
+                    <div class="team-badge-pill-identity"><div id="homeLogoPill" class="vector-logo-box">⚙️</div><span id="homeHeaderLabel">Home Team</span></div>
                     <div class="formation-numeric-tag">4-4-2 Flat</div>
                 </div>
 
-                <!-- UN-SQUASHED TACTICAL FIELD CANVAS -->
                 <div id="tacticalPitchCanvas" class="tactical-field-canvas" style="display: none;">
                     <div class="field-midline-stripe"></div>
                     <div class="field-center-circle-ring"></div>
                     <div class="field-penalty-box-top"></div>
                     <div class="field-penalty-box-bottom"></div>
                     
-                    <!-- ICLEAN4U ROASTERS (TOP HALF LINES) -->
                     <div class="pitch-player-node" style="top: 6%; left: 50%;"><div class="jersey-icon-circle gk">GK</div><span>GK</span></div>
-                    <div class="pitch-player-node" style="top: 17%; left: 16%;"><div class="jersey-icon-circle">DF</div><span>Berger</span></div>
-                    <div class="pitch-player-node" style="top: 15%; left: 39%;"><div class="jersey-icon-circle">DF</div><span>Zink</span></div>
+                    <div class="pitch-player-node" style="top: 17%; left: 16%;"><div class="jersey-icon-circle">DF</div><span>Def 1</span></div>
+                    <div class="pitch-player-node" style="top: 15%; left: 39%;"><div class="jersey-icon-circle">DF</div><span>Def 2</span></div>
                     <div class="pitch-player-node" style="top: 15%; left: 61%;"><div class="jersey-icon-circle">DF</div><span>Def 3</span></div>
                     <div class="pitch-player-node" style="top: 17%; left: 84%;"><div class="jersey-icon-circle">DF</div><span>Def 4</span></div>
                     <div class="pitch-player-node" style="top: 35%; left: 16%;"><div class="jersey-icon-circle">MF</div><span>Mid 1</span></div>
                     <div class="pitch-player-node" style="top: 32%; left: 39%;"><div class="jersey-icon-circle">MF</div><span>Mid 2</span></div>
                     <div class="pitch-player-node" style="top: 32%; left: 61%;"><div class="jersey-icon-circle">MF</div><span>Mid 3</span></div>
                     <div class="pitch-player-node" style="top: 35%; left: 84%;"><div class="jersey-icon-circle">MF</div><span>Mid 4</span></div>
-                    <div class="pitch-player-node" style="top: 45%; left: 34%;"><div class="jersey-icon-circle">FW</div><span>Francis</span></div>
-                    <div class="pitch-player-node" style="top: 45%; left: 66%;"><div class="jersey-icon-circle">FW</div><span>Morgan</span></div>
+                    <div class="pitch-player-node" style="top: 44%; left: 34%;"><div class="jersey-icon-circle">FW</div><span>Striker 1</span></div>
+                    <div class="pitch-player-node" style="top: 44%; left: 66%;"><div class="jersey-icon-circle">FW</div><span>Striker 2</span></div>
                     
-                    <!-- CONCEPT PHYSIO VERNON (BOTTOM HALF LINES - TRADITIONAL 4-4-2) -->
-                    <!-- Strikers Line (Safely Below Center Stripe) -->
-                    <div class="pitch-player-node" style="bottom: 45%; left: 34%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4164.jpg"></div><span>Carter (ST)</span></div>
-                    <div class="pitch-player-node" style="bottom: 45%; left: 66%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4202.jpg"></div><span>Adam (ST)</span></div>
-                    <!-- Midfield Line -->
+                    <div class="pitch-player-node" style="bottom: 44%; left: 34%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4164.jpg"></div><span>Carter (ST)</span></div>
+                    <div class="pitch-player-node" style="bottom: 44%; left: 66%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4202.jpg"></div><span>Adam (ST)</span></div>
                     <div class="pitch-player-node" style="bottom: 35%; left: 16%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4082.jpg"></div><span>Mike (LM)</span></div>
-                    <div class="pitch-player-node" style="bottom: 32%; left: 39%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4346.jpg"></div><span>Devonie (CM)</span></div>
-                    <div class="pitch-player-node" style="bottom: 32%; left: 61%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/3606.jpg"></div><span>Nico (AM)</span></div>
+                    <div class="pitch-player-node" style="bottom: 32%; left: 39%;"><div class="jersey-icon-circle"><img src="devani.jpeg"></div><span>Devonie (CM)</span></div>
+                    <div class="pitch-player-node" style="bottom: 32%; left: 61%;"><div class="jersey-icon-circle"><img src="nico.jpeg"></div><span>Nico (AM)</span></div>
                     <div class="pitch-player-node" style="bottom: 35%; left: 84%;"><div class="jersey-icon-circle highlight"><img src="https://kmsl.ca/upload/id_photos/4307.jpg"></div><span style="color:var(--accent); font-weight:800;">Kuda (RM)</span></div>
-                    <!-- Defensive Line -->
                     <div class="pitch-player-node" style="bottom: 17%; left: 16%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4064.jpg"></div><span>Minh (LB)</span></div>
-                    <div class="pitch-player-node" style="bottom: 15%; left: 39%;"><div class="jersey-icon-circle fallback-avatar">DF</div><span>Tata (CB)</span></div>
-                    <div class="pitch-player-node" style="bottom: 15%; left: 61%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4111.jpg"></div><span>Quinn (CB)</span></div>
-                    <div class="pitch-player-node" style="bottom: 17%; left: 84%;"><div class="jersey-icon-circle"><img src="https://kmsl.ca/upload/id_photos/4063.jpg"></div><span>Bekim (RB)</span></div>
-                    <!-- Keeper -->
+                    <div class="pitch-player-node" style="bottom: 15%; left: 39%;"><div class="jersey-icon-circle"><img src="tata.jpeg"></div><span>Tapiwa (CB)</span></div>
+                    <div class="pitch-player-node" style="bottom: 15%; left: 61%;"><div class="jersey-icon-circle"><img src="quinn.jpeg"></div><span>Quinn (CB)</span></div>
+                    <div class="pitch-player-node" style="bottom: 17%; left: 84%;"><div class="jersey-icon-circle"><img src="bekim.jpeg"></div><span>Bekim (RB)</span></div>
                     <div class="pitch-player-node" style="bottom: 6%; left: 50%;"><div class="jersey-icon-circle gk"><img src="https://kmsl.ca/upload/id_photos/4068.jpg"></div><span>Tyler (GK)</span></div>
                 </div>
 
-                <!-- BOTTOM HEADER: CONCEPT PHYSIO VERNON -->
                 <div class="formation-team-header-bar" id="awayHeaderBar" style="display: none; margin-top: 15px;">
-                    <div class="team-badge-pill-identity">
-                        <div class="vector-logo-box logo-concept">⚡</div>
-                        <span style="color: var(--accent);">Concept Physio Vernon</span>
-                    </div>
+                    <div class="team-badge-pill-identity"><div class="vector-logo-box logo-concept">⚡</div><span style="color: var(--accent);">Concept Physio Vernon</span></div>
                     <div class="formation-numeric-tag">4-4-2 Diamond</div>
                 </div>
 
-                <!-- WORLD CUP ACCURATE SIDE-BY-SIDE INTERACTIVE BENCH WRAPPER -->
                 <div id="splitBenchContainer" class="world-cup-bench-layout" style="display: none;">
-                    
-                    <!-- LEFT SIDE BENCH: HOME TEAM -->
                     <div class="bench-team-side-wing">
-                        <div class="bench-wing-title-header">
-                            <div class="vector-logo-box logo-iclean" style="width:14px; height:14px; font-size:0.5rem;">🧽</div>
-                            <span>ICLEAN4U Bench</span>
-                        </div>
-                        <div class="bench-horizontal-player-strip">
-                            <div class="bench-portrait-circle">👤</div>
-                            <div class="bench-profile-name-label">Sub Player 1</div>
-                        </div>
-                        <div class="bench-horizontal-player-strip">
-                            <div class="bench-portrait-circle">👤</div>
-                            <div class="bench-profile-name-label">Sub Player 2</div>
-                        </div>
+                        <div class="bench-wing-title-header"><span id="leftBenchHeader">Opponent Bench</span></div>
+                        <div class="bench-horizontal-player-strip"><div class="bench-portrait-circle">👤</div><div class="bench-profile-name-label">Sub Roster 1</div></div>
                     </div>
-
-                    <!-- CENTER HUB STRIP SEPARATOR -->
-                    <div class="bench-center-divider-hub">
-                        <h4>SUBSTITUTES BENCH</h4>
-                    </div>
-
-                    <!-- RIGHT SIDE BENCH: AWAY TEAM (CONCEPT PHYSIO ACTIVE ROSTER DATA) -->
+                    <div class="bench-center-divider-hub"><h4>BENCH</h4></div>
                     <div class="bench-team-side-wing">
-                        <div class="bench-wing-title-header" style="justify-content: flex-end;">
-                            <span>Concept Bench</span>
-                            <div class="vector-logo-box logo-concept" style="width:14px; height:14px; font-size:0.5rem;">⚡</div>
-                        </div>
-                        <div class="bench-horizontal-player-strip">
-                            <div class="bench-portrait-circle"><img src="https://kmsl.ca/upload/id_photos/4081.jpg"></div>
-                            <div class="bench-profile-name-label">Evan Aasen</div>
-                        </div>
-                        <div class="bench-horizontal-player-strip">
-                            <div class="bench-portrait-circle"><img src="https://kmsl.ca/upload/id_photos/4087.jpg"></div>
-                            <div class="bench-profile-name-label">T. Mutembwa</div>
-                        </div>
-                        <div class="bench-horizontal-player-strip">
-                            <div class="bench-portrait-circle"><img src="https://kmsl.ca/upload/id_photos/4477.jpg"></div>
-                            <div class="bench-profile-name-label">R. Atkinson</div>
-                        </div>
-                        <div class="bench-horizontal-player-strip">
-                            <div class="bench-portrait-circle"><img src="https://kmsl.ca/upload/id_photos/4071.jpg"></div>
-                            <div class="bench-profile-name-label">B. Bohmer</div>
-                        </div>
+                        <div class="bench-wing-title-header" style="justify-content: flex-end;"><span>Concept Bench</span><div class="vector-logo-box logo-concept" style="width:14px; height:14px; font-size:0.5rem;">⚡</div></div>
+                        <div class="bench-horizontal-player-strip"><div class="bench-portrait-circle"><img src="evan.jpeg"></div><div class="bench-profile-name-label">Evan Aasen</div></div>
+                        <div class="bench-horizontal-player-strip"><div class="bench-portrait-circle"><img src="lucas.jpeg"></div><div class="bench-profile-name-label">Lucas Johnson</div></div>
+                        <div class="bench-horizontal-player-strip"><div class="bench-portrait-circle"><img src="aiden.jpeg"></div><div class="bench-profile-name-label">Aidan Spraggs</div></div>
+                        <div class="bench-horizontal-player-strip"><div class="bench-portrait-circle"><img src="ethan.jpeg"></div><div class="bench-profile-name-label">Ethan Nickoli</div></div>
+                        <div class="bench-horizontal-player-strip"><div class="bench-portrait-circle"><img src="ryan.jpeg"></div><div class="bench-profile-name-label">Ryan Commance</div></div>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </main>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const matchKey = urlParams.get('match');
-
         const metaField = document.getElementById('matchMetaDetails');
         const homeName = document.getElementById('homeClubLink');
         const awayName = document.getElementById('awayClubLink');
@@ -210,38 +147,40 @@
         const splitBench = document.getElementById('splitBenchContainer');
         const homeBar = document.getElementById('homeHeaderBar');
         const awayBar = document.getElementById('awayHeaderBar');
+        const homeLogo = document.getElementById('homeLogoPill');
+        const homeLbl = document.getElementById('homeHeaderLabel');
+        const leftBench = document.getElementById('leftBenchHeader');
 
-        if (matchKey === 'concept-iclean') {
-            homeName.innerText = "ICLEAN4U Roasters";
+        if (matchKey === 'concept-solos' || matchKey === 'concept-iclean') {
+            const isSolos = (matchKey === 'concept-solos');
+            homeName.innerText = isSolos ? "Solos Energy Mules" : "ICLEAN4U Roasters";
             awayName.innerText = "Concept Physio Vernon";
-            homeName.href = "team-hub.html?team=iclean";
+            homeName.href = isSolos ? "team-hub.html?team=solos" : "team-hub.html?team=iclean"; 
             awayName.href = "team-hub.html?team=concept";
-            metaField.innerText = "6:30 PM • Tuesday, June 16, 2026 @ Beasley 1";
-            overviewText.innerText = "A massive battle under the lights. The top tier attacking matrix of ICLEAN4U takes on a battle-ready Concept Physio Vernon squad striving to capture crucial tactical performance points to break into the table center logs rankings.";
-            pitchWrapper.style.display = 'block';
-            splitBench.style.display = 'grid';
-            homeBar.style.display = 'flex';
-            awayBar.style.display = 'flex';
+            
+            metaField.innerText = isSolos ? "8:30 PM • Tuesday, July 7, 2026 @ Beasley 1" : "6:30 PM • Tuesday, June 16, 2026 @ Beasley 1";
+            overviewText.innerText = "Official game data loaded. Team setups locked.";
+            
+            homeLogo.className = isSolos ? "vector-logo-box logo-solos" : "vector-logo-box logo-iclean";
+            homeLogo.innerText = isSolos ? "⚙️" : "🧽";
+            homeLbl.innerText = isSolos ? "Solos Energy Rented Mules" : "ICLEAN4U Roasters";
+            leftBench.innerText = isSolos ? "Solos Bench" : "ICLEAN Bench";
 
-            document.querySelectorAll('.jersey-icon-circle:not(.gk):not(.highlight)').forEach(node => {
-                node.style.borderColor = "#facc15"; 
-            });
+            pitchWrapper.style.display = 'block'; 
+            splitBench.style.display = 'grid'; 
+            homeBar.style.display = 'flex'; 
+            awayBar.style.display = 'flex';
+            document.querySelectorAll('.jersey-icon-circle:not(.gk):not(.highlight)').forEach(n => n.style.borderColor = "#facc15");
         } else {
-            homeName.innerText = "Home Club";
-            awayName.innerText = "Away Club";
-            metaField.innerText = "Match Schedule Logs Pending Configuration Data Sync";
-            overviewText.innerText = "Analytical summary profiles locked by match officials.";
-            pitchWrapper.style.display = 'none';
-            splitBench.style.display = 'none';
-            homeBar.style.display = 'none';
-            awayBar.style.display = 'none';
+            homeName.innerText = "Home Club"; awayName.innerText = "Away Club";
+            metaField.innerText = "Fixture Logs Pending Sync";
+            pitchWrapper.style.display = 'none'; splitBench.style.display = 'none';
         }
 
         function switchReportTab(event, tabId) {
             document.querySelectorAll('.match-tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.report-tab-pane').forEach(p => p.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active'); document.getElementById(tabId).classList.add('active');
         }
     </script>
 </body>
